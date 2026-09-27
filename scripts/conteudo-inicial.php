@@ -128,6 +128,8 @@ if ( ! function_exists( 'pna_core_criar_solicitacao' ) ) {
 }
 
 pna_core_criar_caracteristicas_padrao();
+pna_core_criar_paginas();
+WP_CLI::log( 'Páginas da área logada conferidas: Entrar, Cadastro, Meu perfil, Adotar, Apadrinhar.' );
 
 // Pets de exemplo (nomes do Figma). Campos: espécie, sexo, porte, idade, castrado, vacinado, sociável, brincalhão, carinhoso.
 $pna_pets = array(

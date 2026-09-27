@@ -81,6 +81,44 @@ Toda mudança passa pela função `pna_core_alterar_status_solicitacao()`, que v
 - **"Contagem de adoções" no site:** adoções **concluídas** (pet entregue). "Hoje" conta as concluídas na data atual, pelo histórico de cada solicitação.
 - **"Padrinhos" na página do pet:** apadrinhamentos com status **Ativo (aprovado)**.
 
+## Perfil do Membro (metadados do usuário)
+
+| Dado | Chave | Observação |
+|---|---|---|
+| Nome | `display_name` | Nome completo |
+| E-mail | `user_email` | Usado para entrar; só a coordenação altera |
+| Pronome | `pna_pronome` | Opcional |
+| Telefone / WhatsApp | `pna_telefone` | |
+| CEP | `pna_cep` | Só dígitos |
+| Data de nascimento | `pna_nascimento` | AAAA-MM-DD; adoção exige 18 anos ou mais |
+| Ocupação | `pna_ocupacao` | |
+| Aceite dos termos | `pna_aceite_termos` | Data e hora do cadastro |
+
+Os formulários de adoção e apadrinhamento vêm **pré-preenchidos** com esses dados e os atualizam no envio. Os dados de cada pedido também ficam guardados na própria solicitação (`_pna_dados`), como estavam no momento do envio.
+
+## Páginas da área logada
+
+Criadas automaticamente pelo plugin (na ativação e no `npm run conteudo`), com o template **"Página de conta e formulários"** do tema.
+
+| Página | Endereço | Acesso | Conteúdo |
+|---|---|---|---|
+| Entrar | `/entrar/` | Visitantes (logado vai para o perfil) | Bloco `pna-core/entrar` |
+| Cadastro | `/cadastro/` | Visitantes (logado vai para o perfil) | Bloco `pna-core/cadastro` |
+| Meu perfil | `/meu-perfil/` | Logados | Bloco `pna-core/perfil` |
+| Adotar | `/adotar/?pet_id=ID` | Logados | Bloco `pna-core/formulario` (adoção) |
+| Apadrinhar | `/apadrinhar/?pet_id=ID` | Logados | Bloco `pna-core/formulario` (apadrinhamento) |
+
+- Os links de login e cadastro do WordPress (`wp_login_url()`, `wp_registration_url()`) passam a apontar para Entrar e Cadastro. O `wp-login.php` continua funcionando para quem acessar diretamente (útil se algo der errado com as páginas).
+- Regras dos formulários: não é possível pedir a adoção de um pet em processo ou adotado, nem enviar um segundo pedido do mesmo tipo para o mesmo pet enquanto o primeiro estiver em andamento.
+- O Membro pode **cancelar** um pedido de adoção enquanto está Enviado ou Em análise, e um apadrinhamento também quando está Ativo.
+
+## Privacidade (LGPD)
+
+Os dados do PNA entram nas ferramentas nativas do WordPress (**Ferramentas → Exportar dados pessoais** e **Apagar dados pessoais**):
+
+- **Exportar:** dados do perfil e todas as solicitações da pessoa.
+- **Apagar:** remove os dados do perfil e substitui as respostas das solicitações por "[dados removidos a pedido do titular]", mantendo pet, tipo, status e datas para o histórico do projeto.
+
 ## Papéis
 
 | Papel | Slug | Acesso |

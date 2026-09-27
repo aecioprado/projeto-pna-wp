@@ -65,6 +65,19 @@ Cada pasta em `themes/pna-theme/blocks/` com um `block.json` é registrada autom
 
 Visitantes que clicam em Adotar ou Apadrinhar vão para o login e, depois, voltam ao formulário.
 
+## 2.1.1 Blocos do plugin (área logada)
+
+Ficam em `plugins/pna-core/blocks/` e usam as classes de formulário deste documento.
+
+| Bloco | Página |
+|---|---|
+| `pna-core/entrar` | Entrar |
+| `pna-core/cadastro` | Cadastro |
+| `pna-core/perfil` | Meu perfil (cabeçalho, minhas solicitações, meus dados, senha, privacidade) |
+| `pna-core/formulario` | Adotar e Apadrinhar (atributo `tipo`) |
+
+Classes novas, estilizadas em `assets/css/componentes/conta.css`: `pna-aviso` (`--sucesso`, `--erro`), `pna-conta`, `pna-perfil`, `pna-solicitacoes` / `pna-solicitacao--{status}`, `pna-solicitar`, `pna-link-botao`.
+
 ## 2.2 Templates
 
 | Template | Página |
@@ -75,6 +88,7 @@ Visitantes que clicam em Adotar ou Apadrinhar vão para o login e, depois, volta
 | `home.html` | Lista de postagens `/postagens/` |
 | `single.html` | Cada postagem |
 | `page.html` | Páginas comuns (Dúvidas, Doações…) |
+| `pagina-conta.html` | Template escolhível "Página de conta e formulários": breadcrumb e conteúdo, sem título (usado pelas páginas da área logada) |
 | `404.html` | Página não encontrada |
 | `index.html` | Reserva (qualquer outra listagem) |
 

@@ -57,7 +57,8 @@ Acesse:
 
 - Site: http://localhost:8888
 - Painel: http://localhost:8888/wp-admin — usuário `admin`, senha `password` (apenas local)
-- Membro de exemplo (criado pelo `npm run conteudo`): usuário `membro.teste`, senha `senha-local-123` (apenas local)
+- Membro de exemplo (criado pelo `npm run conteudo`): e-mail `membro.teste@exemplo.local` ou usuário `membro.teste`, senha `senha-local-123` (apenas local)
+- Área logada: http://localhost:8888/entrar/, /cadastro/ e /meu-perfil/. Se algo der errado com essas páginas, o login padrão continua em http://localhost:8888/wp-login.php
 
 ## Comandos do dia a dia
 
@@ -127,6 +128,10 @@ npm run wp -- eval 'wp_get_theme()->delete_pattern_cache();'
 Atenção: `wp transient delete --all` **não** resolve, porque esse cache é de outro tipo ("site transient").
 
 **Na produção:** aumente a versão do tema a cada publicação (veja "Publicação").
+
+### Página de formulário mostra "Página não encontrada"
+
+Se um endereço com parâmetro (ex.: `/adotar/?pet_id=17`) cai na página 404, confira se o nome do parâmetro não coincide com uma variável do WordPress (como `pet`, `especie`, `name`, `page`). Veja a regra no `CLAUDE.md`.
 
 ### `permission denied` ao rodar `npm start` no Linux
 

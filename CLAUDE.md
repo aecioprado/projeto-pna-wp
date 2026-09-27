@@ -56,6 +56,10 @@ Leia este arquivo antes de alterar qualquer coisa. Ele define as convenções do
 - Ao mudar papéis ou permissões, aumente `PNA_CORE_VERSAO_PAPEIS`.
 - O plugin não depende de funções do tema. Se precisar de uma, verifique com `function_exists()`.
 - Slugs das características (`macho`, `femea`, `gato`…) são contrato com o tema: não os renomeie.
+- Blocos do plugin ficam em `plugins/pna-core/blocks/<nome>/` (namespace `pna-core/`) e são registrados automaticamente. Formulários enviam para a própria página com `pna_acao` + nonce `pna_{acao}` e são tratados em `pna_core_tratar_envios()`.
+- Campos de formulário: use `pna_core_campo()`, `pna_core_aceite()` e `pna_core_resumo_erros()` (`includes/campos.php`), que já geram a marcação acessível do contrato.
+- Nomes de parâmetros de URL e de campos de formulário **não podem** coincidir com variáveis públicas do WordPress: o nome do tipo de conteúdo (`pet`), as variáveis das características (`especie`, `sexo`, `porte`, `idade`) e as nativas (`name`, `page`, `p`, `s`, `author`, `order`, `year`, `error`…). O WordPress lê essas variáveis tanto da URL quanto do POST e passa a buscar outro conteúdo, resultando em "página não encontrada". Use prefixo: `pet_id`, `pna_pet`.
+- Dados pessoais novos precisam entrar no exportador e no apagador de `includes/privacidade.php` (LGPD).
 
 ## Código
 

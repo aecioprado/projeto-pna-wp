@@ -356,5 +356,14 @@
       "title": "Rodapé",
       "area": "footer"
     }
+  ],
+  "customTemplates": [
+    {
+      "name": "pagina-conta",
+      "title": "Página de conta e formulários (sem título)",
+      "postTypes": [
+        "page"
+      ]
+    }
   ]
 }

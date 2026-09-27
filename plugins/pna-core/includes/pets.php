@@ -336,6 +336,6 @@ add_filter( 'query_loop_block_query_vars', 'pna_core_consulta_de_pets_sem_adotad
  */
 function pna_core_url_formulario( $tipo, $pet_id ) {
 	$pagina = 'adocao' === $tipo ? '/adotar/' : '/apadrinhar/';
-	$url    = add_query_arg( 'pet', (int) $pet_id, home_url( $pagina ) );
+	$url    = add_query_arg( 'pet_id', (int) $pet_id, home_url( $pagina ) );
 	return is_user_logged_in() ? $url : wp_login_url( $url );
 }

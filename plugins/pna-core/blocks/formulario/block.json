@@ -1,0 +1,15 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "pna-core/formulario",
+  "title": "Formulário de adoção ou apadrinhamento (PNA)",
+  "category": "widgets",
+  "icon": "clipboard",
+  "textdomain": "pna",
+  "attributes": {
+    "tipo": { "type": "string", "enum": [ "adocao", "apadrinhamento" ], "default": "adocao" }
+  },
+  "supports": { "html": false, "multiple": false, "reusable": false },
+  "editorScript": "pna-core-editor-ssr",
+  "render": "file:./render.php"
+}
