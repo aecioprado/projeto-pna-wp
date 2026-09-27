@@ -1,0 +1,17 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "pna/header-acoes",
+  "title": "Ações do cabeçalho (PNA)",
+  "category": "theme",
+  "icon": "admin-users",
+  "description": "Visitantes veem Cadastro e Entrar; usuários logados veem notificações e perfil.",
+  "textdomain": "pna",
+  "supports": {
+    "html": false,
+    "multiple": false,
+    "reusable": false
+  },
+  "editorScript": "file:./editor.js",
+  "render": "file:./render.php"
+}

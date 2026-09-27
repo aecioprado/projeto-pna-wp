@@ -16,8 +16,10 @@ No CSS, use sempre a variável gerada pelo WordPress, nunca o valor direto.
 | `primary-tint` | `#E1F3E2` | Verde a 15% sobre creme | Fundo dos campos e caixas de destaque | `--wp--preset--color--primary-tint` |
 | `background` | `#FFFFF1` | Fundo das páginas | Fundo geral | `--wp--preset--color--background` |
 | `surface` | `#FCF9EA` | Fundo de login e cadastro | Superfícies, texto sobre verde | `--wp--preset--color--surface` |
-| `text` | `#666666` | Ajustado de `#868686` (ver [decisão 0001](decisoes/0001-contraste-das-cores.md)) | Texto corrido, rótulos | `--wp--preset--color--text` |
+| `body-text` | `#666666` | Ajustado de `#868686` (ver [decisão 0001](decisoes/0001-contraste-das-cores.md)) | Texto corrido, rótulos | `--wp--preset--color--body-text` |
 | `white` | `#FFFFFF` | Texto dos botões | Texto sobre verde forte | `--wp--preset--color--white` |
+
+**Atenção ao nomear tokens de cor:** o WordPress gera a classe `.has-{slug}-color` para cada cor. Os nomes `text` e `background` colidem com classes internas do WordPress (`.has-text-color`, `.has-background`) e quebram as cores do site. Por isso o texto usa `body-text`.
 
 O editor não permite cores fora desta paleta (`color.custom: false`), para evitar que o visual se desvie do design system.
 

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "pna/breadcrumb",
+  "title": "Trilha de navegação (PNA)",
+  "category": "theme",
+  "icon": "arrow-right-alt2",
+  "description": "Mostra o caminho até a página atual. Não aparece na página inicial.",
+  "textdomain": "pna",
+  "supports": {
+    "html": false,
+    "reusable": false,
+    "spacing": { "margin": true }
+  },
+  "editorScript": "file:./editor.js",
+  "render": "file:./render.php"
+}

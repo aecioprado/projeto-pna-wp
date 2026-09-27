@@ -30,7 +30,7 @@ Manter o verde original da marca nos elementos decorativos (bordas, ícones, fun
 | Valor digitado dentro dos campos | `primary-text` | `#35B08A` | 2,34:1 ❌ | `#1F7A5E` | 4,53:1 ✅ |
 | Texto branco sobre botões | `primary-strong` | `#35B08A` | 2,72:1 ❌ | `#2E9C7A` | 3,41:1 ✅ (texto grande) |
 | Menu creme sobre o cabeçalho verde | `primary-strong` | `#35B08A` | 2,57:1 ❌ | `#2E9C7A` | 3,23:1 ✅ (texto grande) |
-| Texto corrido | `text` | `#868686` | 3,61:1 ❌ | `#666666` | 5,69:1 ✅ |
+| Texto corrido | `body-text` | `#868686` | 3,61:1 ❌ | `#666666` | 5,69:1 ✅ |
 | Bordas, ícones, fundos suaves | `primary` | `#35B08A` | não se aplica | `#35B08A` (sem mudança) | — |
 
 Valores medidos contra o fundo creme `#FFFFF1` (token `background`) ou contra o verde correspondente.
@@ -40,7 +40,7 @@ Valores medidos contra o fundo creme `#FFFFF1` (token `background`) ou contra o 
 - `primary` → bordas, ícones e elementos decorativos. **Nunca** para texto.
 - `primary-strong` → fundo de botões, cabeçalho e rodapé (texto branco ou creme por cima, sempre em tamanho grande: 24px ou mais).
 - `primary-text` → títulos, links e qualquer texto verde sobre fundo claro.
-- `text` → textos corridos, rótulos e breadcrumb.
+- `body-text` → textos corridos, rótulos e breadcrumb.
 
 ## Implicações
 
@@ -55,7 +55,7 @@ O texto de exemplo dentro dos campos vazios (placeholder) usa `primary-light` (`
 
 ## Como voltar para as cores fiéis ao Figma
 
-Os únicos tokens alterados em relação ao Figma são `primary-strong`, `primary-text` e `text`. Há duas formas de reverter.
+Os únicos tokens alterados em relação ao Figma são `primary-strong`, `primary-text` e `body-text`. Há duas formas de reverter.
 
 ### Opção A – Pelo painel, sem código (reversível a qualquer momento)
 
@@ -78,7 +78,7 @@ A escolha fica gravada no banco de dados de cada ambiente, então precisa ser fe
    |---|---|---|
    | `primary-strong` | `#2E9C7A` | `#35B08A` |
    | `primary-text` | `#1F7A5E` | `#35B08A` |
-   | `text` | `#666666` | `#868686` |
+   | `body-text` | `#666666` | `#868686` |
 
 3. Rode o site local (`npm start`) e confira as páginas.
 4. Abra um Pull Request para a `main` e **atualize este documento**: mude o status para "substituída" e registre a nova decisão em um arquivo `docs/decisoes/000N-...md`.

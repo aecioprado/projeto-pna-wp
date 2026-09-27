@@ -15,6 +15,8 @@ Leia este arquivo antes de alterar qualquer coisa. Ele define as convenções do
 - `themes/pna-theme/`: somente visual (templates, parts, patterns, estilos).
 - `plugins/pna-core/`: regras de negócio (CPTs `pet` e solicitações, taxonomias, papéis, e-mails). O visual nunca depende de lógica escrita no tema.
 - Ambiente local: `wp-env` (Docker). Use `npm run wp -- <comando>` para WP-CLI.
+- Ganchos entre tema e plugin: o tema expõe filtros (`pna_notificacoes_nao_lidas`, `pna_breadcrumb_itens`) que o plugin preenche. O tema funciona sem o plugin.
+- O desenvolvedor usa Ubuntu: instruções de terminal devem funcionar em bash no Linux.
 
 ## Escopo
 
@@ -28,12 +30,15 @@ Leia este arquivo antes de alterar qualquer coisa. Ele define as convenções do
   - `primary`: bordas, ícones e decoração. Nunca para texto.
   - `primary-strong`: fundo de botões, cabeçalho e rodapé, com texto claro de 24px ou mais.
   - `primary-text`: títulos, links e qualquer texto verde sobre fundo claro.
-  - `text`: texto corrido e rótulos.
+  - `body-text`: texto corrido e rótulos.
 - Todo texto precisa de contraste mínimo WCAG AA (4,5:1 texto normal; 3:1 texto grande). Confira combinações novas antes de usar.
 - Todo campo de formulário tem rótulo visível acima; o placeholder é só um exemplo.
 - CSS extra só em `assets/css/components.css`, e apenas para o que o theme.json não cobre.
 - Fonte Poppins hospedada no tema (`assets/fonts/poppins/`); não carregar do Google Fonts (LGPD e desempenho).
-- Ícones em SVG em `assets/icons/`.
+- Ícones em SVG em `assets/icons/`, impressos com `pna_icone( 'nome' )`. Registre origem e licença em `assets/icons/README.md`.
+- Blocos próprios do tema ficam em `blocks/<nome>/`, são dinâmicos (`render.php`) e não têm etapa de build: o `editor.js` usa as bibliotecas globais do WordPress (`window.wp`).
+- Cabeçalho e rodapé: a parte de template já gera `<header>`/`<footer>`; o grupo interno usa `div`.
+- Não use `text` nem `background` como nome de cor: colidem com classes internas do WordPress.
 
 ## Decisões
 

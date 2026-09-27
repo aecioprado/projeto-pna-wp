@@ -25,7 +25,7 @@
         { "slug": "primary-tint", "color": "#E1F3E2", "name": "Verde tinta (fundo de campos)" },
         { "slug": "background", "color": "#FFFFF1", "name": "Creme (fundo)" },
         { "slug": "surface", "color": "#FCF9EA", "name": "Creme claro (superfície)" },
-        { "slug": "text", "color": "#666666", "name": "Texto" },
+        { "slug": "body-text", "color": "#666666", "name": "Texto" },
         { "slug": "white", "color": "#FFFFFF", "name": "Branco" }
       ]
     },
@@ -106,7 +106,7 @@
   "styles": {
     "color": {
       "background": "var(--wp--preset--color--background)",
-      "text": "var(--wp--preset--color--text)"
+      "text": "var(--wp--preset--color--body-text)"
     },
     "typography": {
       "fontFamily": "var(--wp--preset--font-family--poppins)",

@@ -16,5 +16,8 @@
     "WP_DEBUG_DISPLAY": false,
     "SCRIPT_DEBUG": true,
     "DISALLOW_FILE_EDIT": true
+  },
+  "mappings": {
+    "wp-content/pna-scripts": "./scripts"
   }
 }
