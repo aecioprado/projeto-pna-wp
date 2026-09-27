@@ -75,6 +75,12 @@ Efeitos no pet (automáticos):
 
 Toda mudança passa pela função `pna_core_alterar_status_solicitacao()`, que valida a permissão, grava o histórico, atualiza o pet e dispara a ação `pna_core_solicitacao_status_alterado` (usada pelas notificações e e-mails, em fase futura).
 
+### Contadores
+
+- **Menu "Solicitações" no painel:** a bolinha vermelha mostra só as solicitações com status **Enviada** (novas, que ninguém da equipe olhou). Some quando todas foram movidas para outro status.
+- **"Contagem de adoções" no site:** adoções **concluídas** (pet entregue). "Hoje" conta as concluídas na data atual, pelo histórico de cada solicitação.
+- **"Padrinhos" na página do pet:** apadrinhamentos com status **Ativo (aprovado)**.
+
 ## Papéis
 
 | Papel | Slug | Acesso |

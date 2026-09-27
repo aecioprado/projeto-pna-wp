@@ -347,3 +347,31 @@ function pna_core_buscar_solicitacoes( $pet_id = 0, $tipo = '', $status = array(
 function pna_core_contar_padrinhos( $pet_id ) {
 	return count( pna_core_buscar_solicitacoes( $pet_id, 'apadrinhamento', array( 'aprovada' ) ) );
 }
+
+/**
+ * Número de adoções concluídas (Figma: "Contagem de adoções").
+ *
+ * @param string $periodo 'total' ou 'hoje'.
+ * @return int
+ */
+function pna_core_contar_adocoes( $periodo = 'total' ) {
+	$concluidas = pna_core_buscar_solicitacoes( 0, 'adocao', array( 'concluida' ) );
+
+	if ( 'hoje' !== $periodo ) {
+		return count( $concluidas );
+	}
+
+	$hoje  = current_time( 'Y-m-d' );
+	$total = 0;
+	foreach ( $concluidas as $id ) {
+		foreach ( array_reverse( (array) get_post_meta( $id, '_pna_historico', true ) ) as $item ) {
+			if ( isset( $item['status'] ) && 'concluida' === $item['status'] ) {
+				if ( 0 === strpos( (string) $item['data'], $hoje ) ) {
+					++$total;
+				}
+				break;
+			}
+		}
+	}
+	return $total;
+}

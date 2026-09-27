@@ -56,6 +56,19 @@ foreach ( $pna_paginas as $pna_slug => $pna_titulo ) {
 	WP_CLI::log( "Criada: {$pna_titulo}" );
 }
 
+// Textos das páginas Dúvidas e Doações (só se a página ainda estiver vazia).
+foreach ( array( 'duvidas' => 'pna/conteudo-duvidas', 'doacoes' => 'pna/conteudo-doacoes' ) as $pna_slug => $pna_padrao ) {
+	if ( isset( $pna_ids[ $pna_slug ] ) && '' === trim( (string) get_post_field( 'post_content', $pna_ids[ $pna_slug ] ) ) ) {
+		wp_update_post(
+			array(
+				'ID'           => $pna_ids[ $pna_slug ],
+				'post_content' => '<!-- wp:pattern {"slug":"' . $pna_padrao . '"} /-->',
+			)
+		);
+		WP_CLI::log( "Textos do Figma aplicados à página: {$pna_slug}" );
+	}
+}
+
 if ( isset( $pna_ids['inicio'], $pna_ids['postagens'] ) ) {
 	update_option( 'show_on_front', 'page' );
 	update_option( 'page_on_front', $pna_ids['inicio'] );
@@ -154,6 +167,37 @@ foreach ( $pna_pets as $pna_slug => $pna_pet ) {
 	update_post_meta( $pna_id, '_pna_carinhoso', (string) $pna_pet[9] );
 	$pna_pet_ids[ $pna_slug ] = $pna_id;
 	WP_CLI::log( "Criado o pet de exemplo: {$pna_pet[0]}" );
+}
+
+// Fotos dos pets de exemplo (scripts/exemplos/pets/, créditos em CREDITOS.md).
+// Só são aplicadas a pets que ainda não têm foto principal.
+require_once ABSPATH . 'wp-admin/includes/file.php';
+require_once ABSPATH . 'wp-admin/includes/media.php';
+require_once ABSPATH . 'wp-admin/includes/image.php';
+
+foreach ( $pna_pet_ids as $pna_slug => $pna_id ) {
+	$pna_foto = __DIR__ . '/exemplos/pets/' . $pna_slug . '.jpg';
+	if ( has_post_thumbnail( $pna_id ) || ! file_exists( $pna_foto ) ) {
+		continue;
+	}
+	// O WordPress move o arquivo ao importar: trabalha numa cópia temporária.
+	$pna_temp = wp_tempnam( $pna_slug . '.jpg' );
+	copy( $pna_foto, $pna_temp );
+	$pna_anexo = media_handle_sideload(
+		array(
+			'name'     => $pna_slug . '.jpg',
+			'tmp_name' => $pna_temp,
+		),
+		$pna_id,
+		/* translators: %s: nome do pet. */
+		sprintf( 'Foto de %s (exemplo)', get_the_title( $pna_id ) )
+	);
+	if ( is_wp_error( $pna_anexo ) ) {
+		WP_CLI::warning( "Foto de {$pna_slug} não importada: " . $pna_anexo->get_error_message() );
+		continue;
+	}
+	set_post_thumbnail( $pna_id, $pna_anexo );
+	WP_CLI::log( 'Foto aplicada ao pet: ' . get_the_title( $pna_id ) );
 }
 
 // Membro de exemplo (somente ambiente local).
