@@ -148,7 +148,7 @@ Prefixos de branch: `feat/` (funcionalidade), `fix/` (correção), `docs/` (docu
 
 ## Publicação
 
-O passo a passo completo (ambiente de testes, atualizações e produção) está em [`docs/publicacao.md`](docs/publicacao.md). Num WordPress novo, a configuração é feita pelo painel, em **Ferramentas → PNA: configuração inicial**, sem terminal.
+O passo a passo completo para a HostGator (primeira publicação, testes com o site fechado, lançamento e atualizações) está em [`docs/publicacao.md`](docs/publicacao.md). Não há ambiente de testes na hospedagem: o site fica fechado ao público pelo **modo pré-lançamento** até o lançamento (decisão 0007). Num WordPress novo, a configuração é feita pelo painel, em **Ferramentas → PNA: configuração inicial**, sem terminal.
 
 A cada publicação na produção, **aumente a versão do tema** no cabeçalho de `themes/pna-theme/style.css` (ex.: `0.3.0` → `0.4.0`). Faça o mesmo com a versão do plugin (`plugins/pna-core/pna-core.php`) quando ele mudar. Isso faz o WordPress atualizar o cache de padrões e os navegadores baixarem o CSS novo. Sem isso, padrões novos podem não aparecer no site publicado.
 

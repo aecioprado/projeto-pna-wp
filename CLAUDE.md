@@ -75,7 +75,7 @@ Leia este arquivo antes de alterar qualquer coisa. Ele define as convenções do
 - No ambiente local, `WP_DEVELOPMENT_MODE` = `theme` desliga esse cache; não remova essa linha do `.wp-env.json`.
 - A versão do plugin fica em `plugins/pna-core/pna-core.php` (cabeçalho e constante `PNA_CORE_VERSAO`): aumente as duas juntas.
 - Configurações que um site novo precisa (páginas, opções) entram em `pna_core_configuracao_inicial()` (`includes/configuracao.php`), nunca só no `scripts/conteudo-inicial.php`, que é exclusivo do ambiente local.
-- Publicação: `docs/publicacao.md`.
+- Publicação: `docs/publicacao.md`. Não há ambiente de testes na hospedagem (decisão 0007): toda mudança é validada no ambiente local antes de ser publicada, e o site fica fechado pelo modo pré-lançamento até o lançamento.
 
 ## Git
 
