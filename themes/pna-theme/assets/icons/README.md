@@ -10,6 +10,13 @@
 | `lixeira.svg` | Excluir notificação | Provisório: Tabler Icons (MIT) |
 | `sexo-macho.svg` | Sexo do pet (macho) | Provisório: Tabler Icons (MIT) |
 | `sexo-femea.svg` | Sexo do pet (fêmea) | Provisório: Tabler Icons (MIT) |
+| `especie-gato.svg` | Espécie gato (filtro, página do pet) | Provisório: Tabler Icons (MIT) |
+| `especie-cachorro.svg` | Espécie cachorro (filtro, página do pet) | Provisório: Tabler Icons (MIT) |
+| `coracoes.svg` | Traço "Sociável" | Provisório: Tabler Icons (MIT) |
+| `bola.svg` | Traço "Brincalhão" | Provisório: Tabler Icons (MIT) |
+| `pata.svg` | Traço "Carinhoso" e "Porte" | Provisório: Tabler Icons (MIT) |
+| `bolo.svg` | "Idade" na página do pet | Provisório: Tabler Icons (MIT) |
+| `saude.svg` | "Saúde" na página do pet | Provisório: Tabler Icons (MIT) |
 
 Os ícones provisórios têm forma parecida com os do Figma e serão substituídos pelos SVGs exportados do Figma assim que possível. Para trocar, basta sobrescrever o arquivo mantendo o mesmo nome.
 

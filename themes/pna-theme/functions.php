@@ -62,13 +62,35 @@ function pna_editor_styles() {
 add_action( 'after_setup_theme', 'pna_editor_styles' );
 
 /**
- * Registra os blocos próprios do tema (pasta blocks/).
+ * Registra os blocos próprios do tema: cada pasta em blocks/ com um
+ * block.json vira um bloco. Blocos novos são registrados sozinhos.
+ *
+ * O script "pna-editor-ssr" mostra no editor a prévia gerada pelo
+ * render.php de blocos que não têm editor próprio.
  */
 function pna_register_blocks() {
-	register_block_type( get_theme_file_path( 'blocks/header-acoes' ) );
-	register_block_type( get_theme_file_path( 'blocks/breadcrumb' ) );
+	wp_register_script(
+		'pna-editor-ssr',
+		get_theme_file_uri( 'assets/js/editor-ssr.js' ),
+		array( 'wp-blocks', 'wp-element', 'wp-block-editor', 'wp-server-side-render' ),
+		(string) filemtime( get_theme_file_path( 'assets/js/editor-ssr.js' ) ),
+		true
+	);
+
+	foreach ( glob( get_theme_file_path( 'blocks/*/block.json' ) ) as $arquivo ) {
+		register_block_type( dirname( $arquivo ) );
+	}
 }
 add_action( 'init', 'pna_register_blocks' );
+
+/**
+ * O plugin pna-core está ativo? Blocos que mostram pets dependem dele.
+ *
+ * @return bool
+ */
+function pna_tem_plugin_core() {
+	return function_exists( 'pna_core_obter_status_pet' );
+}
 
 /**
  * Categoria "PNA" na lista de padrões do editor.

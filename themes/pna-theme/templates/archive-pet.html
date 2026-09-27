@@ -1,0 +1,47 @@
+<!-- wp:template-part {"slug":"header","area":"header"} /-->
+
+<!-- wp:group {"tagName":"main","className":"pna-principal pna-galeria","layout":{"type":"constrained"}} -->
+<main class="wp-block-group pna-principal pna-galeria">
+	<!-- wp:pna/breadcrumb /-->
+
+	<!-- wp:group {"className":"pna-galeria__topo","layout":{"type":"default"}} -->
+	<div class="wp-block-group pna-galeria__topo">
+		<!-- wp:query-title {"type":"archive","showPrefix":false,"level":1,"fontSize":"x-large"} /-->
+
+		<!-- wp:pattern {"slug":"pna/legenda-personalidade"} /-->
+	</div>
+	<!-- /wp:group -->
+
+	<!-- wp:group {"className":"pna-galeria__corpo","layout":{"type":"default"}} -->
+	<div class="wp-block-group pna-galeria__corpo">
+		<!-- wp:pna/filtro-pets /-->
+
+		<!-- wp:query {"queryId":30,"query":{"inherit":true}} -->
+		<div class="wp-block-query">
+			<!-- wp:post-template {"layout":{"type":"grid","columnCount":4}} -->
+				<!-- wp:pna/card-pet /-->
+			<!-- /wp:post-template -->
+
+			<!-- wp:query-pagination {"paginationArrow":"arrow","layout":{"type":"flex","justifyContent":"center"}} -->
+				<!-- wp:query-pagination-previous /-->
+				<!-- wp:query-pagination-numbers /-->
+				<!-- wp:query-pagination-next /-->
+			<!-- /wp:query-pagination -->
+
+			<!-- wp:query-no-results -->
+				<!-- wp:group {"className":"pna-galeria__vazio","layout":{"type":"constrained"}} -->
+				<div class="wp-block-group pna-galeria__vazio">
+					<!-- wp:paragraph {"align":"center"} -->
+					<p class="has-text-align-center">Nenhum pet encontrado com esses filtros. Tente mudar ou limpar o filtro.</p>
+					<!-- /wp:paragraph -->
+				</div>
+				<!-- /wp:group -->
+			<!-- /wp:query-no-results -->
+		</div>
+		<!-- /wp:query -->
+	</div>
+	<!-- /wp:group -->
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","area":"footer"} /-->

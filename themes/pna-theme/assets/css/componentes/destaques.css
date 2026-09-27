@@ -28,3 +28,19 @@
 	color: var(--wp--preset--color--primary-text);
 	font-weight: 700;
 }
+
+/* Contador de adoções (bloco pna/contador-adocoes). */
+.pna-contador__hoje {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--wp--preset--spacing--40);
+	margin: 0;
+	padding-block: var(--wp--preset--spacing--30);
+}
+
+.pna-contador__rotulo {
+	color: var(--wp--preset--color--primary-text);
+	font-size: var(--wp--preset--font-size--x-large);
+	font-weight: 800;
+}

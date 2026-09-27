@@ -1,0 +1,54 @@
+/* Layouts de páginas: inicial, galeria de pets e listas. */
+
+/* Página inicial: contador à esquerda, imagem de destaque à direita. */
+.pna-inicio__topo {
+	display: grid;
+	grid-template-columns: 392px minmax(0, 1fr);
+	gap: var(--wp--preset--spacing--70);
+	align-items: start;
+	margin-block-start: var(--wp--preset--spacing--80);
+}
+
+.pna-inicio__topo .wp-block-post-featured-image img {
+	width: 100%;
+	height: 451px;
+	object-fit: cover;
+}
+
+.pna-inicio__secao {
+	margin-block-start: var(--wp--preset--spacing--80);
+}
+
+/* Galeria de pets: filtro à esquerda, cards à direita. */
+.pna-galeria__topo {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+}
+
+.pna-galeria__topo h1 {
+	flex: 1;
+	margin: 0;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.pna-galeria__corpo {
+	display: grid;
+	grid-template-columns: 240px minmax(0, 1fr);
+	gap: var(--wp--preset--spacing--60);
+	align-items: start;
+	margin-block-start: var(--wp--preset--spacing--50);
+}
+
+.pna-galeria__corpo .wp-block-post-template {
+	gap: var(--wp--preset--spacing--50);
+}
+
+/* Aviso quando nenhum pet corresponde aos filtros. */
+.pna-galeria__vazio {
+	padding: var(--wp--preset--spacing--60);
+	border-radius: var(--wp--custom--radius--medium);
+	background-color: var(--wp--preset--color--primary-tint);
+	text-align: center;
+}

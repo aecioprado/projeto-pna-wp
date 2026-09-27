@@ -34,7 +34,49 @@ O CSS de cada componente está em `themes/pna-theme/assets/css/componentes/`, um
 | Cards de doação | `patterns/cards-doacao.php` | Título e 3 cards (alimentos, itens, dinheiro) |
 | Atalhos de dúvidas | `patterns/atalhos-duvidas.php` | Título e 4 atalhos para a página Dúvidas |
 | Contador de adoções | `patterns/contador-adocoes.php` | Caixa de destaque e botão "Adote um pet". **Números fixos por enquanto**: o plugin vai torná-los automáticos |
+| Pets para adoção | `patterns/grade-pets.php` | Título, 4 pets mais recentes (sem adotados) e "Ver mais" |
+| Conteúdo da página Dúvidas | `patterns/conteudo-duvidas.php` | Textos do Figma com âncoras (`#quem-somos`, `#como-adotar`, `#buscar-pet`, `#apadrinhamento`, `#maus-tratos`) |
+| Conteúdo da página Doações | `patterns/conteudo-doacoes.php` | Textos do Figma com âncoras (`#alimentos`, `#itens`, `#dinheiro`, `#pix`) |
+| Legenda de personalidade | `patterns/legenda-personalidade.php` | Ícones Sociável/Brincalhão/Carinhoso (usada na galeria; não aparece no seletor) |
 | Guia de estilo | `patterns/guia-de-estilo.php` | Página de referência (não aparece no seletor de padrões) |
+
+O **Contador de adoções** agora usa o bloco `pna/contador-adocoes`, com números reais.
+
+## 2.1 Blocos do tema
+
+Cada pasta em `themes/pna-theme/blocks/` com um `block.json` é registrada automaticamente. Todos são gerados no servidor (`render.php`).
+
+| Bloco | Onde é usado | O que faz |
+|---|---|---|
+| `pna/header-acoes` | Cabeçalho | Cadastro/Entrar ou sino/perfil |
+| `pna/breadcrumb` | Todas as páginas internas | Trilha de navegação |
+| `pna/card-pet` | Dentro de um bloco Consulta de pets | Card de pet, com selo "Em processo de adoção" quando for o caso |
+| `pna/filtro-pets` | Galeria (`archive-pet.html`) | Filtro por idade, porte, espécie e sexo, pela URL, sem JavaScript |
+| `pna/pet-detalhes` | Página do pet (`single-pet.html`) | Foto, dados, saúde, personalidade, padrinhos e botões |
+| `pna/contador-adocoes` | Padrão "Contador de adoções" | Adoções concluídas hoje e no total |
+
+### Botões da página do pet, conforme a situação
+
+| Situação | Adotar | Apadrinhar |
+|---|---|---|
+| Disponível | ✅ | ✅ |
+| Em processo de adoção | Aviso "já está em processo de adoção" | ✅ |
+| Adotado | Aviso "já encontrou um lar!" | — |
+
+Visitantes que clicam em Adotar ou Apadrinhar vão para o login e, depois, voltam ao formulário.
+
+## 2.2 Templates
+
+| Template | Página |
+|---|---|
+| `front-page.html` | Página inicial (a imagem ao lado do contador é a **imagem destacada** da página "Página inicial") |
+| `archive-pet.html` | Galeria `/pets/` |
+| `single-pet.html` | Página de cada pet |
+| `home.html` | Lista de postagens `/postagens/` |
+| `single.html` | Cada postagem |
+| `page.html` | Páginas comuns (Dúvidas, Doações…) |
+| `404.html` | Página não encontrada |
+| `index.html` | Reserva (qualquer outra listagem) |
 
 ## 3. Componentes com estrutura HTML fixa
 

@@ -1,0 +1,166 @@
+/* Página do pet (Figma: "Rhaenyra"). Bloco: pna/pet-detalhes */
+
+.pna-pet {
+	display: grid;
+	grid-template-columns: 441px minmax(0, 1fr);
+	gap: var(--wp--preset--spacing--70);
+	align-items: start;
+}
+
+.pna-pet__foto {
+	display: block;
+	width: 100%;
+	aspect-ratio: 441 / 465;
+	object-fit: cover;
+	box-sizing: border-box;
+	border: var(--wp--custom--border--medium) solid var(--wp--preset--color--primary);
+	border-radius: var(--wp--custom--radius--medium);
+	background-color: var(--wp--preset--color--primary-pale);
+}
+
+.pna-pet__acoes {
+	display: flex;
+	flex-direction: column;
+	gap: var(--wp--preset--spacing--30);
+	margin-top: var(--wp--preset--spacing--40);
+}
+
+.pna-pet__botao,
+.pna-pet__botao .wp-block-button__link {
+	width: 100%;
+	box-sizing: border-box;
+	text-align: center;
+}
+
+.pna-pet__aviso {
+	margin: 0;
+	padding: var(--wp--preset--spacing--30) var(--wp--preset--spacing--40);
+	border-radius: var(--wp--custom--radius--small);
+	background-color: var(--wp--preset--color--primary-tint);
+	color: var(--wp--preset--color--primary-text);
+	font-weight: 700;
+	text-align: center;
+}
+
+.pna-pet__cabecalho {
+	display: flex;
+	align-items: center;
+	gap: var(--wp--preset--spacing--40);
+}
+
+.pna-pet__nome {
+	margin: 0;
+	font-size: var(--wp--preset--font-size--x-large);
+	font-weight: 700;
+}
+
+.pna-pet__marca {
+	display: inline-flex;
+	padding-left: var(--wp--preset--spacing--40);
+	border-left: var(--wp--custom--border--medium) solid var(--wp--preset--color--primary-pale);
+	color: var(--wp--preset--color--primary-text);
+}
+
+.pna-pet__marca .pna-icone {
+	width: 40px;
+	height: 40px;
+}
+
+.pna-pet__descricao {
+	margin-block: var(--wp--preset--spacing--40);
+	font-size: var(--wp--preset--font-size--small);
+	font-weight: 700;
+}
+
+.pna-pet__dados {
+	display: flex;
+	flex-direction: column;
+	gap: var(--wp--preset--spacing--40);
+	margin: 0;
+}
+
+.pna-pet__dado dt {
+	display: flex;
+	align-items: center;
+	gap: var(--wp--preset--spacing--20);
+	color: var(--wp--preset--color--primary-text);
+	font-size: var(--wp--preset--font-size--large);
+	font-weight: 700;
+}
+
+.pna-pet__dado dt .pna-icone {
+	width: 24px;
+	height: 24px;
+}
+
+.pna-pet__dado dd {
+	margin: 4px 0 0;
+	font-size: var(--wp--preset--font-size--small);
+	font-weight: 700;
+}
+
+.pna-pet__dado dd strong {
+	color: var(--wp--preset--color--primary-text);
+}
+
+.pna-pet__rodape {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--wp--preset--spacing--60);
+	margin-top: var(--wp--preset--spacing--60);
+}
+
+.pna-pet__tracos {
+	display: flex;
+	flex-direction: column;
+	gap: var(--wp--preset--spacing--30);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.pna-pet__traco {
+	display: grid;
+	grid-template-columns: 140px auto;
+	align-items: center;
+	gap: var(--wp--preset--spacing--40);
+}
+
+.pna-pet__nivel {
+	display: flex;
+	gap: var(--wp--preset--spacing--20);
+	color: var(--wp--preset--color--primary-strong);
+}
+
+.pna-pet__nivel .pna-icone {
+	width: 36px;
+	height: 36px;
+}
+
+.pna-pet__nivel .is-inativo {
+	color: var(--wp--preset--color--primary-pale);
+}
+
+.pna-pet__traco-nome {
+	font-size: var(--wp--preset--font-size--medium);
+	font-weight: 600;
+}
+
+.pna-pet__padrinhos {
+	min-width: 200px;
+}
+
+.pna-pet__padrinhos-titulo {
+	margin: 0;
+	padding: var(--wp--preset--spacing--30);
+	background-color: var(--wp--preset--color--primary-tint);
+	color: var(--wp--preset--color--primary-text);
+	font-size: var(--wp--preset--font-size--large);
+	font-weight: 700;
+}
+
+.pna-pet__padrinhos-numero {
+	padding-block: var(--wp--preset--spacing--30);
+	font-size: var(--wp--preset--font-size--huge);
+}

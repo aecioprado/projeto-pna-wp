@@ -1,0 +1,13 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "pna/contador-adocoes",
+  "title": "Contador de adoções (PNA)",
+  "category": "theme",
+  "icon": "chart-bar",
+  "description": "Caixa \"Contagem de adoções\" com os números reais (hoje e desde o início).",
+  "textdomain": "pna",
+  "supports": { "html": false, "reusable": false },
+  "editorScript": "pna-editor-ssr",
+  "render": "file:./render.php"
+}

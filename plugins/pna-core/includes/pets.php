@@ -297,3 +297,45 @@ function pna_core_galeria_sem_adotados( $query ) {
 	$query->set( 'meta_query', $meta_query );
 }
 add_action( 'pre_get_posts', 'pna_core_galeria_sem_adotados' );
+
+/**
+ * Listas de pets montadas no editor (bloco Consulta, ex.: página inicial)
+ * também não mostram pets adotados.
+ *
+ * @param array $vars Argumentos da consulta.
+ * @return array
+ */
+function pna_core_consulta_de_pets_sem_adotados( $vars ) {
+	if ( empty( $vars['post_type'] ) || 'pet' !== $vars['post_type'] ) {
+		return $vars;
+	}
+	$vars['meta_query']   = isset( $vars['meta_query'] ) ? (array) $vars['meta_query'] : array(); // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
+	$vars['meta_query'][] = array(
+		'relation' => 'OR',
+		array(
+			'key'     => '_pna_status',
+			'value'   => 'adotado',
+			'compare' => '!=',
+		),
+		array(
+			'key'     => '_pna_status',
+			'compare' => 'NOT EXISTS',
+		),
+	);
+	return $vars;
+}
+add_filter( 'query_loop_block_query_vars', 'pna_core_consulta_de_pets_sem_adotados' );
+
+/**
+ * Endereço do formulário de adoção ou apadrinhamento de um pet.
+ * Visitantes são levados ao login e voltam ao formulário depois.
+ *
+ * @param string $tipo   'adocao' ou 'apadrinhamento'.
+ * @param int    $pet_id ID do pet.
+ * @return string
+ */
+function pna_core_url_formulario( $tipo, $pet_id ) {
+	$pagina = 'adocao' === $tipo ? '/adotar/' : '/apadrinhar/';
+	$url    = add_query_arg( 'pet', (int) $pet_id, home_url( $pagina ) );
+	return is_user_logged_in() ? $url : wp_login_url( $url );
+}
