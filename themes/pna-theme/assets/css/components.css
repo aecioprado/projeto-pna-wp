@@ -1,5 +1,14 @@
 /*
  * Componentes do PNA que o theme.json não cobre.
- * Use SEMPRE as variáveis geradas pelo theme.json (--wp--preset--color--primary etc.),
- * nunca cores fixas.
+ * Use SEMPRE as variáveis geradas pelo theme.json
+ * (var(--wp--preset--color--primary-text), var(--wp--custom--radius--medium) etc.),
+ * nunca cores ou medidas fixas.
  */
+
+/*
+ * Escopo apenas desktop (docs/decisoes/0002-escopo-apenas-desktop.md):
+ * abaixo de 1280px o layout não se reorganiza; o navegador mostra rolagem horizontal.
+ */
+body {
+	min-width: var(--wp--custom--layout--canvas);
+}
