@@ -17,25 +17,6 @@ function pna_core_quadros_solicitacao() {
 }
 add_action( 'add_meta_boxes_pna_solicitacao', 'pna_core_quadros_solicitacao' );
 
-/**
- * Nomes legíveis dos campos do formulário.
- *
- * @return array
- */
-function pna_core_rotulos_campos_formulario() {
-	return array(
-		'nome'            => __( 'Nome completo', 'pna' ),
-		'email'           => __( 'E-mail', 'pna' ),
-		'nascimento'      => __( 'Data de nascimento', 'pna' ),
-		'telefone'        => __( 'Telefone / WhatsApp', 'pna' ),
-		'cep'             => __( 'CEP', 'pna' ),
-		'ocupacao'        => __( 'Ocupação', 'pna' ),
-		'animais'         => __( 'Animais que já tem', 'pna' ),
-		'motivo'          => __( 'Por que decidiu adotar', 'pna' ),
-		'valor_mensal'    => __( 'Valor mensal', 'pna' ),
-		'forma_pagamento' => __( 'Forma de pagamento', 'pna' ),
-	);
-}
 
 /**
  * Quadro "Respostas do formulário" (somente leitura).

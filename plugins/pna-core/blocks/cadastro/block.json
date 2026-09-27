@@ -1,0 +1,12 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "pna-core/cadastro",
+  "title": "Formulário de cadastro (PNA)",
+  "category": "widgets",
+  "icon": "admin-users",
+  "textdomain": "pna",
+  "supports": { "html": false, "multiple": false, "reusable": false },
+  "editorScript": "pna-core-editor-ssr",
+  "render": "file:./render.php"
+}
