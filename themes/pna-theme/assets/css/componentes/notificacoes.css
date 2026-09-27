@@ -1,0 +1,97 @@
+/*
+ * Notificações (Figma: "Minhas notificações").
+ * Geradas pelo plugin pna-core. Estrutura em docs/componentes.md.
+ */
+
+.pna-notificacoes {
+	display: flex;
+	flex-direction: column;
+	gap: var(--wp--preset--spacing--60);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.pna-notificacao-item {
+	display: flex;
+	align-items: center;
+	gap: var(--wp--preset--spacing--70);
+}
+
+.pna-notificacao {
+	display: grid;
+	flex: 0 1 940px;
+	grid-template-columns: 90px 1fr auto;
+	column-gap: var(--wp--preset--spacing--50);
+	align-items: start;
+	min-height: 170px;
+	box-sizing: border-box;
+	padding: var(--wp--preset--spacing--40) var(--wp--preset--spacing--40) var(--wp--preset--spacing--40) var(--wp--preset--spacing--50);
+	border: var(--wp--custom--border--medium) solid var(--wp--preset--color--primary);
+	border-radius: var(--wp--custom--radius--medium);
+	background-color: var(--wp--preset--color--surface);
+}
+
+/* Não lida: fundo verde claro (Figma: "Adoção aprovada!"). */
+.pna-notificacao--nao-lida {
+	background-color: var(--wp--preset--color--primary-tint);
+}
+
+.pna-notificacao__icone {
+	align-self: center;
+	color: var(--wp--preset--color--primary-strong);
+}
+
+.pna-notificacao__icone .pna-icone {
+	width: 80px;
+	height: 80px;
+}
+
+.pna-notificacao__titulo {
+	margin: 0 0 var(--wp--preset--spacing--20);
+	color: var(--wp--preset--color--primary-text);
+	font-size: var(--wp--preset--font-size--x-large);
+	font-weight: 700;
+}
+
+.pna-notificacao__texto {
+	margin: 0;
+	font-size: var(--wp--preset--font-size--medium);
+}
+
+.pna-notificacao__tempo {
+	color: var(--wp--preset--color--primary-text);
+	font-size: var(--wp--preset--font-size--medium);
+	font-weight: 700;
+	white-space: nowrap;
+}
+
+/* Botão excluir (Figma: círculo verde com lixeira, fora do card). */
+.pna-notificacao__excluir {
+	display: inline-flex;
+	flex-shrink: 0;
+	align-items: center;
+	justify-content: center;
+	width: 100px;
+	height: 88px;
+	padding: 0;
+	border: 0;
+	border-radius: 50%;
+	background-color: var(--wp--preset--color--primary-strong);
+	color: var(--wp--preset--color--white);
+	cursor: pointer;
+}
+
+.pna-notificacao__excluir .pna-icone {
+	width: 48px;
+	height: 48px;
+}
+
+.pna-notificacao__excluir:hover {
+	background-color: var(--wp--preset--color--primary-text);
+}
+
+.pna-notificacao__excluir:focus-visible {
+	outline: var(--wp--custom--border--thin) solid var(--wp--preset--color--primary-text);
+	outline-offset: 3px;
+}

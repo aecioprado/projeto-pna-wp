@@ -17,16 +17,61 @@
       "duotone": [],
       "gradients": [],
       "palette": [
-        { "slug": "primary", "color": "#35B08A", "name": "Verde PNA (marca)" },
-        { "slug": "primary-strong", "color": "#2E9C7A", "name": "Verde PNA forte (fundos com texto claro)" },
-        { "slug": "primary-text", "color": "#1F7A5E", "name": "Verde PNA texto" },
-        { "slug": "primary-light", "color": "#8ED1B5", "name": "Verde claro" },
-        { "slug": "primary-pale", "color": "#C5E4CF", "name": "Verde pálido" },
-        { "slug": "primary-tint", "color": "#E1F3E2", "name": "Verde tinta (fundo de campos)" },
-        { "slug": "background", "color": "#FFFFF1", "name": "Creme (fundo)" },
-        { "slug": "surface", "color": "#FCF9EA", "name": "Creme claro (superfície)" },
-        { "slug": "body-text", "color": "#666666", "name": "Texto" },
-        { "slug": "white", "color": "#FFFFFF", "name": "Branco" }
+        {
+          "slug": "primary",
+          "color": "#35B08A",
+          "name": "Verde PNA (marca)"
+        },
+        {
+          "slug": "primary-strong",
+          "color": "#2E9C7A",
+          "name": "Verde PNA forte (fundos com texto claro)"
+        },
+        {
+          "slug": "primary-text",
+          "color": "#1F7A5E",
+          "name": "Verde PNA texto"
+        },
+        {
+          "slug": "primary-light",
+          "color": "#8ED1B5",
+          "name": "Verde claro"
+        },
+        {
+          "slug": "primary-pale",
+          "color": "#C5E4CF",
+          "name": "Verde pálido"
+        },
+        {
+          "slug": "primary-tint",
+          "color": "#E1F3E2",
+          "name": "Verde tinta (fundo de campos)"
+        },
+        {
+          "slug": "background",
+          "color": "#FFFFF1",
+          "name": "Creme (fundo)"
+        },
+        {
+          "slug": "surface",
+          "color": "#FCF9EA",
+          "name": "Creme claro (superfície)"
+        },
+        {
+          "slug": "body-text",
+          "color": "#666666",
+          "name": "Texto"
+        },
+        {
+          "slug": "danger",
+          "color": "#B3261E",
+          "name": "Vermelho (erros)"
+        },
+        {
+          "slug": "white",
+          "color": "#FFFFFF",
+          "name": "Branco"
+        }
       ]
     },
     "typography": {
@@ -45,47 +90,116 @@
               "fontWeight": "600",
               "fontStyle": "normal",
               "fontDisplay": "swap",
-              "src": [ "file:./assets/fonts/poppins/poppins-semibold-latin.woff2" ]
+              "src": [
+                "file:./assets/fonts/poppins/poppins-semibold-latin.woff2"
+              ]
             },
             {
               "fontFamily": "Poppins",
               "fontWeight": "700",
               "fontStyle": "normal",
               "fontDisplay": "swap",
-              "src": [ "file:./assets/fonts/poppins/poppins-bold-latin.woff2" ]
+              "src": [
+                "file:./assets/fonts/poppins/poppins-bold-latin.woff2"
+              ]
             },
             {
               "fontFamily": "Poppins",
               "fontWeight": "800",
               "fontStyle": "normal",
               "fontDisplay": "swap",
-              "src": [ "file:./assets/fonts/poppins/poppins-extrabold-latin.woff2" ]
+              "src": [
+                "file:./assets/fonts/poppins/poppins-extrabold-latin.woff2"
+              ]
             }
           ]
         }
       ],
       "fontSizes": [
-        { "slug": "x-small", "size": "13px", "name": "Legenda (13px)" },
-        { "slug": "small", "size": "16px", "name": "Pequeno (16px)" },
-        { "slug": "medium", "size": "20px", "name": "Texto (20px)" },
-        { "slug": "large", "size": "24px", "name": "Grande (24px)" },
-        { "slug": "x-large", "size": "32px", "name": "Título de card (32px)" },
-        { "slug": "xx-large", "size": "40px", "name": "Título de página (40px)" },
-        { "slug": "huge", "size": "60px", "name": "Destaque (60px)" },
-        { "slug": "display", "size": "96px", "name": "Display (96px)" }
+        {
+          "slug": "x-small",
+          "size": "13px",
+          "name": "Legenda (13px)"
+        },
+        {
+          "slug": "small",
+          "size": "16px",
+          "name": "Pequeno (16px)"
+        },
+        {
+          "slug": "medium",
+          "size": "20px",
+          "name": "Texto (20px)"
+        },
+        {
+          "slug": "large",
+          "size": "24px",
+          "name": "Grande (24px)"
+        },
+        {
+          "slug": "x-large",
+          "size": "32px",
+          "name": "Título de card (32px)"
+        },
+        {
+          "slug": "xx-large",
+          "size": "40px",
+          "name": "Título de página (40px)"
+        },
+        {
+          "slug": "huge",
+          "size": "60px",
+          "name": "Destaque (60px)"
+        },
+        {
+          "slug": "display",
+          "size": "96px",
+          "name": "Display (96px)"
+        }
       ]
     },
     "spacing": {
       "defaultSpacingSizes": false,
-      "units": [ "px", "%" ],
+      "units": [
+        "px",
+        "%"
+      ],
       "spacingSizes": [
-        { "slug": "20", "size": "8px", "name": "2XS (8px)" },
-        { "slug": "30", "size": "12px", "name": "XS (12px)" },
-        { "slug": "40", "size": "20px", "name": "S (20px)" },
-        { "slug": "50", "size": "28px", "name": "M (28px)" },
-        { "slug": "60", "size": "40px", "name": "L (40px)" },
-        { "slug": "70", "size": "60px", "name": "XL (60px)" },
-        { "slug": "80", "size": "80px", "name": "2XL (80px)" }
+        {
+          "slug": "20",
+          "size": "8px",
+          "name": "2XS (8px)"
+        },
+        {
+          "slug": "30",
+          "size": "12px",
+          "name": "XS (12px)"
+        },
+        {
+          "slug": "40",
+          "size": "20px",
+          "name": "S (20px)"
+        },
+        {
+          "slug": "50",
+          "size": "28px",
+          "name": "M (28px)"
+        },
+        {
+          "slug": "60",
+          "size": "40px",
+          "name": "L (40px)"
+        },
+        {
+          "slug": "70",
+          "size": "60px",
+          "name": "XL (60px)"
+        },
+        {
+          "slug": "80",
+          "size": "80px",
+          "name": "2XL (80px)"
+        }
       ]
     },
     "custom": {
@@ -123,10 +237,17 @@
     },
     "elements": {
       "link": {
-        "color": { "text": "var(--wp--preset--color--primary-text)" },
-        "typography": { "fontWeight": "700", "textDecoration": "underline" },
+        "color": {
+          "text": "var(--wp--preset--color--primary-text)"
+        },
+        "typography": {
+          "fontWeight": "700",
+          "textDecoration": "underline"
+        },
         ":hover": {
-          "typography": { "textDecoration": "none" }
+          "typography": {
+            "textDecoration": "none"
+          }
         },
         ":focus": {
           "outline": {
@@ -138,20 +259,34 @@
         }
       },
       "heading": {
-        "color": { "text": "var(--wp--preset--color--primary-text)" },
-        "typography": { "fontWeight": "700", "lineHeight": "1.2" }
+        "color": {
+          "text": "var(--wp--preset--color--primary-text)"
+        },
+        "typography": {
+          "fontWeight": "700",
+          "lineHeight": "1.2"
+        }
       },
       "h1": {
-        "typography": { "fontSize": "var(--wp--preset--font-size--xx-large)", "fontWeight": "600" }
+        "typography": {
+          "fontSize": "var(--wp--preset--font-size--xx-large)",
+          "fontWeight": "600"
+        }
       },
       "h2": {
-        "typography": { "fontSize": "var(--wp--preset--font-size--x-large)" }
+        "typography": {
+          "fontSize": "var(--wp--preset--font-size--x-large)"
+        }
       },
       "h3": {
-        "typography": { "fontSize": "var(--wp--preset--font-size--large)" }
+        "typography": {
+          "fontSize": "var(--wp--preset--font-size--large)"
+        }
       },
       "h4": {
-        "typography": { "fontSize": "var(--wp--preset--font-size--medium)" }
+        "typography": {
+          "fontSize": "var(--wp--preset--font-size--medium)"
+        }
       },
       "button": {
         "color": {
@@ -177,7 +312,9 @@
           }
         },
         ":hover": {
-          "color": { "background": "var(--wp--preset--color--primary-text)" }
+          "color": {
+            "background": "var(--wp--preset--color--primary-text)"
+          }
         },
         ":focus": {
           "outline": {
@@ -209,7 +346,15 @@
     }
   },
   "templateParts": [
-    { "name": "header", "title": "Cabeçalho", "area": "header" },
-    { "name": "footer", "title": "Rodapé", "area": "footer" }
+    {
+      "name": "header",
+      "title": "Cabeçalho",
+      "area": "header"
+    },
+    {
+      "name": "footer",
+      "title": "Rodapé",
+      "area": "footer"
+    }
   ]
 }

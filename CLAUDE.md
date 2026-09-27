@@ -31,9 +31,12 @@ Leia este arquivo antes de alterar qualquer coisa. Ele define as convenções do
   - `primary-strong`: fundo de botões, cabeçalho e rodapé, com texto claro de 24px ou mais.
   - `primary-text`: títulos, links e qualquer texto verde sobre fundo claro.
   - `body-text`: texto corrido e rótulos.
+  - `danger`: mensagens de erro (não existe no Figma; ver `docs/design-tokens.md`).
 - Todo texto precisa de contraste mínimo WCAG AA (4,5:1 texto normal; 3:1 texto grande). Confira combinações novas antes de usar.
 - Todo campo de formulário tem rótulo visível acima; o placeholder é só um exemplo.
-- CSS extra só em `assets/css/components.css`, e apenas para o que o theme.json não cobre.
+- CSS extra só em `assets/css/`: `base.css` (estrutura da página) e um arquivo por componente em `assets/css/componentes/`, carregado automaticamente. Apenas para o que o theme.json não cobre.
+- Antes de criar um componente, consulte `docs/componentes.md`: ele lista os estilos de bloco, os padrões e a estrutura HTML dos componentes gerados pelo plugin. Componente novo = atualizar esse documento e a página "Guia de estilo" (`patterns/guia-de-estilo.php`).
+- Classes CSS em português, no padrão BEM: `pna-bloco__elemento--variacao` (ex.: `pna-campo__entrada`, `pna-notificacao--nao-lida`).
 - Fonte Poppins hospedada no tema (`assets/fonts/poppins/`); não carregar do Google Fonts (LGPD e desempenho).
 - Ícones em SVG em `assets/icons/`, impressos com `pna_icone( 'nome' )`. Registre origem e licença em `assets/icons/README.md`.
 - Blocos próprios do tema ficam em `blocks/<nome>/`, são dinâmicos (`render.php`) e não têm etapa de build: o `editor.js` usa as bibliotecas globais do WordPress (`window.wp`).
@@ -52,7 +55,13 @@ Leia este arquivo antes de alterar qualquer coisa. Ele define as convenções do
 - Textos visíveis sempre traduzíveis: `__( 'Texto', 'pna' )`.
 - Não adicionar plugins de terceiros sem registrar a decisão em `docs/`.
 
+## Versão do tema
+
+- A versão fica no cabeçalho de `themes/pna-theme/style.css`. Aumente a cada entrega que vá para a produção (padrões e templates ficam em cache até a versão mudar).
+- No ambiente local, `WP_DEVELOPMENT_MODE` = `theme` desliga esse cache; não remova essa linha do `.wp-env.json`.
+
 ## Git
 
+- `git switch`/`git pull` podem apagar e recriar pastas; depois deles, oriente reiniciar o ambiente (`npm stop` e `npm start`).
 - Branch por tarefa (`feat/`, `fix/`, `docs/`, `chore/`), Pull Request para a `main`.
 - Nunca versionar: `wp-config.php`, `.env`, dumps de banco, uploads, `node_modules`.

@@ -1,0 +1,46 @@
+/* Títulos e links de seção (Figma: "POSTAGENS", "PETS PARA ADOÇÃO", "Ver mais →") */
+
+/* Estilo de título "Título de seção" */
+.is-style-pna-titulo-secao {
+	color: var(--wp--preset--color--body-text);
+	font-size: var(--wp--preset--font-size--x-large);
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+/* Estilo de parágrafo "Link com seta": o link ganha uma seta depois do texto. */
+.is-style-pna-link-seta a,
+.wp-block-read-more {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--wp--preset--spacing--20);
+	color: var(--wp--preset--color--primary-text);
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.is-style-pna-link-seta a::after,
+.wp-block-read-more::after {
+	content: "";
+	width: 1.1em;
+	height: 1.1em;
+	background-color: currentColor;
+	-webkit-mask: url("../../icons/seta-link.svg") center / contain no-repeat;
+	mask: url("../../icons/seta-link.svg") center / contain no-repeat;
+}
+
+.is-style-pna-link-seta a:hover,
+.wp-block-read-more:hover {
+	text-decoration: underline;
+}
+
+/* Estilo de parágrafo "Número em destaque" (Figma: "00" contornado). */
+.is-style-pna-numero {
+	margin: 0;
+	color: var(--wp--preset--color--primary-pale);
+	font-size: var(--wp--preset--font-size--display);
+	font-weight: 800;
+	line-height: 1;
+	-webkit-text-stroke: var(--wp--custom--border--thin) var(--wp--preset--color--primary-text);
+	paint-order: stroke fill;
+}
