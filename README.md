@@ -12,7 +12,7 @@ projeto-pna-wp/
 ├── package.json          # atalhos: npm start, npm run setup...
 ├── CLAUDE.md             # convenções do projeto para IA e desenvolvedores
 ├── docs/                 # decisões (docs/decisoes), design tokens, manual do admin
-├── plugins/              # pna-core (regras de negócio) – a criar
+├── plugins/pna-core/     # regras de negócio: pets, solicitações, papéis
 ├── scripts/              # scripts de apoio (ex.: conteúdo inicial)
 └── themes/pna-theme/     # tema de blocos (visual)
     ├── theme.json        # design system: cores, fontes, espaçamentos
@@ -44,7 +44,7 @@ cd projeto-pna-wp
 npm install
 npm start          # sobe o WordPress (a 1ª vez demora alguns minutos)
 npm run setup      # português, fuso de Recife, tema PNA e links amigáveis
-npm run conteudo   # páginas, postagens de exemplo, guia de estilo e cadastro aberto
+npm run conteudo   # páginas, postagens, pets e solicitações de exemplo, guia de estilo
 ```
 
 O `npm run conteudo` pode ser executado de novo a qualquer momento: o que já existe não é duplicado.
@@ -57,6 +57,7 @@ Acesse:
 
 - Site: http://localhost:8888
 - Painel: http://localhost:8888/wp-admin — usuário `admin`, senha `password` (apenas local)
+- Membro de exemplo (criado pelo `npm run conteudo`): usuário `membro.teste`, senha `senha-local-123` (apenas local)
 
 ## Comandos do dia a dia
 

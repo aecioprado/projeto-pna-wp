@@ -47,6 +47,16 @@ Leia este arquivo antes de alterar qualquer coisa. Ele define as convenções do
 
 - Decisões importantes ficam em `docs/decisoes/`, numeradas. Antes de mudar algo coberto por uma decisão, leia o arquivo; ao mudar, registre uma nova decisão em vez de apagar a antiga.
 
+## Plugin pna-core
+
+- Funções com prefixo `pna_core_`, constantes `PNA_CORE_*`, metadados com prefixo `_pna_`. (O tema usa o prefixo `pna_`.)
+- Modelo de dados, fluxos e papéis em `docs/modelo-de-dados.md`. Atualize-o a cada mudança de dados.
+- Status de solicitação muda **somente** por `pna_core_alterar_status_solicitacao()`. Nunca altere `_pna_status` de solicitação diretamente.
+- Situação do pet muda por `pna_core_definir_status_pet()`.
+- Ao mudar papéis ou permissões, aumente `PNA_CORE_VERSAO_PAPEIS`.
+- O plugin não depende de funções do tema. Se precisar de uma, verifique com `function_exists()`.
+- Slugs das características (`macho`, `femea`, `gato`…) são contrato com o tema: não os renomeie.
+
 ## Código
 
 - Padrão de código WordPress (WPCS): tabs, `snake_case` em PHP.

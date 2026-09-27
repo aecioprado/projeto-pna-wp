@@ -7,6 +7,7 @@
     "./themes/pna-theme"
   ],
   "plugins": [
+    "./plugins/pna-core",
     "https://downloads.wordpress.org/plugin/query-monitor.zip"
   ],
   "config": {
