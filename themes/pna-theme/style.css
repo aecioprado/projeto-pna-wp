@@ -1,0 +1,16 @@
+/*
+Theme Name: PNA – Pets no Agreste
+Theme URI: https://github.com/aecioprado/projeto-pna-wp
+Description: Tema do projeto de extensão Pets no Agreste (CAA – UFPE, Caruaru). Block theme com design system em theme.json.
+Version: 0.1.0
+Requires at least: 6.6
+Requires PHP: 8.1
+License: GPL-2.0-or-later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: pna
+*/
+
+/*
+ * Este arquivo serve apenas para identificar o tema.
+ * Estilos ficam em theme.json (tokens) e assets/css/ (o que o theme.json não cobre).
+ */
