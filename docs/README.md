@@ -1,6 +1,7 @@
 # Documentação do projeto PNA
 
 - [Design tokens](design-tokens.md): cores, fontes, espaçamentos e como usá-los.
+- [Pendências](pendencias.md): o que ainda depende de informação externa ou de fases futuras.
 
 ## Registro de decisões
 

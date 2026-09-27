@@ -13,7 +13,7 @@
         { "slug": "primary-tint", "color": "#E1F3E2", "name": "Verde tinta (fundo de campos)" },
         { "slug": "background", "color": "#FFFFF1", "name": "Creme (fundo)" },
         { "slug": "surface", "color": "#FCF9EA", "name": "Creme claro (superfície)" },
-        { "slug": "text", "color": "#868686", "name": "Texto" },
+        { "slug": "body-text", "color": "#868686", "name": "Texto" },
         { "slug": "white", "color": "#FFFFFF", "name": "Branco" }
       ]
     }
