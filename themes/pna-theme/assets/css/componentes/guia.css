@@ -1,0 +1,30 @@
+/* Elementos usados só na página "Guia de estilo" (padrão pna/guia-de-estilo). */
+
+.pna-guia-secao {
+	margin-block-start: var(--wp--preset--spacing--80);
+	padding-block-start: var(--wp--preset--spacing--40);
+	border-top: var(--wp--custom--border--thin) solid var(--wp--preset--color--primary-pale);
+}
+
+.pna-guia-cores {
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	gap: var(--wp--preset--spacing--40);
+}
+
+.pna-guia-cor {
+	min-height: 80px;
+	border: 1px solid var(--wp--preset--color--primary-pale);
+	border-radius: var(--wp--custom--radius--small);
+}
+
+.pna-guia-cor-rotulo {
+	margin-block-start: var(--wp--preset--spacing--20);
+	font-size: var(--wp--preset--font-size--x-small);
+	font-weight: 700;
+}
+
+.pna-guia-pets {
+	display: flex;
+	gap: 52px;
+}

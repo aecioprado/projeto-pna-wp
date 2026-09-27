@@ -1,0 +1,165 @@
+/* Cards: base, postagem, doação e pet. Ver docs/componentes.md */
+
+/* Base: estilo de grupo "Card PNA" (borda verde 4px, cantos de 20px). */
+.is-style-pna-card,
+.is-style-pna-card-postagem,
+.is-style-pna-card-doacao,
+.pna-card-pet {
+	position: relative;
+	overflow: hidden;
+	border: var(--wp--custom--border--medium) solid var(--wp--preset--color--primary);
+	border-radius: var(--wp--custom--radius--medium);
+	background-color: var(--wp--preset--color--background);
+}
+
+.is-style-pna-card {
+	padding: var(--wp--preset--spacing--50);
+}
+
+/* Foto com moldura (imagem e imagem destacada). */
+.is-style-pna-foto img,
+.is-style-pna-foto .components-placeholder {
+	border: var(--wp--custom--border--medium) solid var(--wp--preset--color--primary);
+	border-radius: var(--wp--custom--radius--medium);
+}
+
+/* ---------- Card de postagem (Figma: 526 × 232px, foto à esquerda) ---------- */
+.is-style-pna-card-postagem {
+	display: flex;
+	align-items: stretch;
+	gap: 0;
+	min-height: 232px;
+}
+
+.is-style-pna-card-postagem .wp-block-post-featured-image {
+	flex: 0 0 42%;
+	margin: 0;
+}
+
+.is-style-pna-card-postagem .wp-block-post-featured-image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.is-style-pna-card-postagem .pna-card-postagem__texto {
+	flex: 1;
+	gap: var(--wp--preset--spacing--30);
+	padding: var(--wp--preset--spacing--40);
+	background-color: var(--wp--preset--color--primary-tint);
+}
+
+.is-style-pna-card-postagem .wp-block-post-title {
+	margin: 0;
+	font-size: var(--wp--preset--font-size--medium);
+}
+
+.is-style-pna-card-postagem .wp-block-post-title a {
+	text-decoration: none;
+}
+
+.is-style-pna-card-postagem .wp-block-post-title a:hover {
+	text-decoration: underline;
+}
+
+.is-style-pna-card-postagem .wp-block-post-excerpt {
+	margin: 0;
+	font-size: var(--wp--preset--font-size--x-small);
+}
+
+.is-style-pna-card-postagem .wp-block-read-more {
+	align-self: flex-end;
+	margin-top: auto;
+	font-size: var(--wp--preset--font-size--x-small);
+}
+
+/* ---------- Card de doação (Figma: 301 × 176px, texto centralizado) ---------- */
+.is-style-pna-card-doacao {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 176px;
+	padding: var(--wp--preset--spacing--40);
+	background-color: var(--wp--preset--color--primary-tint);
+	text-align: center;
+}
+
+.is-style-pna-card-doacao h3 {
+	margin: 0;
+	font-size: var(--wp--preset--font-size--large);
+	text-transform: uppercase;
+}
+
+.is-style-pna-card-doacao h3 a {
+	text-decoration: none;
+}
+
+/* O card inteiro é clicável: o link do título se estende sobre o card. */
+.is-style-pna-card-doacao h3 a::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+}
+
+.is-style-pna-card-doacao:hover,
+.is-style-pna-card-doacao:focus-within {
+	border-color: var(--wp--preset--color--primary-text);
+}
+
+.is-style-pna-card-doacao p {
+	margin: 0;
+	font-size: var(--wp--preset--font-size--x-small);
+}
+
+/* ---------- Card de pet (Figma: 251 × 305px) ----------
+ * Gerado pelo plugin pna-core. Estrutura em docs/componentes.md. */
+.pna-card-pet {
+	width: 251px;
+}
+
+.pna-card-pet__link {
+	display: flex;
+	flex-direction: column;
+	color: inherit;
+	text-decoration: none;
+}
+
+.pna-card-pet__foto {
+	display: block;
+	width: 100%;
+	aspect-ratio: 251 / 245;
+	object-fit: cover;
+	background-color: var(--wp--preset--color--primary-pale);
+}
+
+.pna-card-pet__rodape {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--wp--preset--spacing--20);
+	padding: var(--wp--preset--spacing--30) var(--wp--preset--spacing--40);
+	border-top: var(--wp--custom--border--medium) solid var(--wp--preset--color--primary);
+	background-color: var(--wp--preset--color--primary-tint);
+	color: var(--wp--preset--color--primary-text);
+}
+
+.pna-card-pet__nome {
+	font-size: var(--wp--preset--font-size--large);
+	font-weight: 700;
+	line-height: 1.2;
+}
+
+.pna-card-pet__sexo .pna-icone {
+	width: 32px;
+	height: 32px;
+}
+
+.pna-card-pet__link:hover .pna-card-pet__nome {
+	text-decoration: underline;
+}
+
+.pna-card-pet__link:focus-visible {
+	outline: var(--wp--custom--border--thin) solid var(--wp--preset--color--primary-text);
+	outline-offset: -8px;
+}

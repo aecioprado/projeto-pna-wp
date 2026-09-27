@@ -1,0 +1,26 @@
+/*
+ * Botões. O botão padrão e o estilo "Contorno" vêm do theme.json.
+ * Aqui ficam só os estilos extras.
+ */
+
+/* Estilo "Atalho" (Figma: blocos verdes de "Dúvidas", 263 × 103px). */
+.wp-block-button.is-style-pna-atalho .wp-block-button__link {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 263px;
+	min-height: 103px;
+	padding: var(--wp--preset--spacing--40);
+	border-radius: var(--wp--custom--radius--small);
+	font-size: var(--wp--preset--font-size--medium);
+	text-align: center;
+	text-transform: none;
+}
+
+/* Botão desabilitado (formulários). */
+.wp-element-button:disabled,
+.wp-element-button[aria-disabled="true"] {
+	background-color: var(--wp--preset--color--primary-light);
+	color: var(--wp--preset--color--primary-text);
+	cursor: not-allowed;
+}

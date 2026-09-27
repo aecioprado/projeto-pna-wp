@@ -1,0 +1,220 @@
+/*
+ * Formulários (Figma: Cadastro, Login, Adoção, Apadrinhamento).
+ * Estrutura HTML em docs/componentes.md. O botão de envio usa a
+ * classe "wp-element-button" e herda o estilo do theme.json.
+ */
+
+.pna-form {
+	display: flex;
+	flex-direction: column;
+	gap: var(--wp--preset--spacing--60);
+}
+
+.pna-form__grade {
+	display: grid;
+	grid-template-columns: repeat(2, 480px);
+	column-gap: 83px;
+	row-gap: var(--wp--preset--spacing--50);
+}
+
+.pna-form__secao-titulo {
+	margin: 0;
+	color: var(--wp--preset--color--primary-text);
+	font-size: var(--wp--preset--font-size--large);
+	font-weight: 700;
+}
+
+.pna-form__acoes {
+	display: flex;
+	align-items: center;
+	gap: var(--wp--preset--spacing--60);
+}
+
+/* ---------- Campo: rótulo + entrada + ajuda + erro ---------- */
+.pna-campo {
+	display: flex;
+	flex-direction: column;
+	gap: var(--wp--preset--spacing--20);
+}
+
+.pna-campo--largo {
+	grid-column: 1 / -1;
+}
+
+.pna-campo__rotulo {
+	color: var(--wp--preset--color--body-text);
+	font-size: var(--wp--preset--font-size--medium);
+	font-weight: 600;
+}
+
+.pna-campo__entrada {
+	box-sizing: border-box;
+	width: 100%;
+	min-height: 72px;
+	padding: var(--wp--preset--spacing--40) 30px;
+	border: var(--wp--custom--border--thick) solid var(--wp--preset--color--primary);
+	border-radius: var(--wp--custom--radius--medium);
+	background-color: var(--wp--preset--color--primary-tint);
+	color: var(--wp--preset--color--primary-text);
+	font-family: inherit;
+	font-size: var(--wp--preset--font-size--large);
+	font-weight: 600;
+	line-height: 1.3;
+}
+
+textarea.pna-campo__entrada {
+	min-height: 200px;
+	resize: vertical;
+}
+
+.pna-campo__entrada::placeholder {
+	color: var(--wp--preset--color--primary-light);
+	opacity: 1;
+}
+
+.pna-campo__entrada:focus-visible {
+	outline: var(--wp--custom--border--thin) solid var(--wp--preset--color--primary-text);
+	outline-offset: 3px;
+}
+
+/* Campo travado (ex.: "Pet escolhido", que vem da página do pet). */
+.pna-campo__entrada[readonly],
+.pna-campo__entrada:disabled {
+	border-style: dashed;
+	cursor: not-allowed;
+}
+
+.pna-campo__ajuda {
+	margin: 0;
+	color: var(--wp--preset--color--body-text);
+	font-size: var(--wp--preset--font-size--x-small);
+	font-weight: 700;
+}
+
+.pna-campo__contador {
+	margin: 0;
+	color: var(--wp--preset--color--body-text);
+	font-size: var(--wp--preset--font-size--x-small);
+	font-weight: 700;
+	text-align: right;
+}
+
+/* Estado de erro: borda vermelha dupla + ícone + mensagem. A cor não é o único sinal. */
+.pna-campo__erro {
+	display: none;
+	margin: 0;
+	color: var(--wp--preset--color--danger);
+	font-size: var(--wp--preset--font-size--small);
+	font-weight: 700;
+}
+
+.pna-campo__erro::before {
+	content: "⚠ ";
+}
+
+.pna-campo--erro .pna-campo__entrada {
+	border-color: var(--wp--preset--color--danger);
+	border-style: double;
+	border-width: 6px;
+}
+
+.pna-campo--erro .pna-campo__erro {
+	display: block;
+}
+
+/* ---------- Opção: checkbox e radio (Figma: quadrado de 37px, cantos de 10px) ---------- */
+.pna-opcao {
+	display: flex;
+	align-items: flex-start;
+	gap: var(--wp--preset--spacing--40);
+	color: var(--wp--preset--color--body-text);
+	font-size: var(--wp--preset--font-size--medium);
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.pna-opcao__marcador {
+	position: relative;
+	flex-shrink: 0;
+	width: 37px;
+	height: 36px;
+	margin: 0;
+	border: var(--wp--custom--border--thin) solid var(--wp--preset--color--primary);
+	border-radius: var(--wp--custom--radius--small);
+	background-color: var(--wp--preset--color--primary-tint);
+	appearance: none;
+	cursor: pointer;
+}
+
+.pna-opcao__marcador[type="radio"] {
+	border-radius: 50%;
+}
+
+.pna-opcao__marcador:checked {
+	border-color: var(--wp--preset--color--primary-strong);
+	background-color: var(--wp--preset--color--primary-strong);
+}
+
+.pna-opcao__marcador:checked::after {
+	content: "";
+	position: absolute;
+	inset: 4px;
+	background-color: var(--wp--preset--color--white);
+	-webkit-mask: url("../../icons/marcado.svg") center / contain no-repeat;
+	mask: url("../../icons/marcado.svg") center / contain no-repeat;
+}
+
+.pna-opcao__marcador[type="radio"]:checked::after {
+	inset: 9px;
+	border-radius: 50%;
+	-webkit-mask: none;
+	mask: none;
+}
+
+.pna-opcao__marcador:focus-visible {
+	outline: var(--wp--custom--border--thin) solid var(--wp--preset--color--primary-text);
+	outline-offset: 3px;
+}
+
+.pna-opcao a {
+	color: var(--wp--preset--color--primary-text);
+	font-weight: 700;
+}
+
+/* Seleção de valor (Figma: apadrinhamento R$ 25 / 50 / 100 / Outro). */
+.pna-escolhas {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--wp--preset--spacing--40);
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.pna-escolha input {
+	position: absolute;
+	opacity: 0;
+}
+
+.pna-escolha span {
+	display: inline-block;
+	padding: 14px 32px;
+	border: var(--wp--custom--border--medium) solid var(--wp--preset--color--primary);
+	border-radius: var(--wp--custom--radius--medium);
+	background-color: var(--wp--preset--color--primary-tint);
+	color: var(--wp--preset--color--primary-text);
+	font-size: var(--wp--preset--font-size--large);
+	font-weight: 700;
+	cursor: pointer;
+}
+
+.pna-escolha input:checked + span {
+	border-color: var(--wp--preset--color--primary-strong);
+	background-color: var(--wp--preset--color--primary-strong);
+	color: var(--wp--preset--color--white);
+}
+
+.pna-escolha input:focus-visible + span {
+	outline: var(--wp--custom--border--thin) solid var(--wp--preset--color--primary-text);
+	outline-offset: 3px;
+}

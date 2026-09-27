@@ -17,6 +17,7 @@ No CSS, use sempre a variável gerada pelo WordPress, nunca o valor direto.
 | `background` | `#FFFFF1` | Fundo das páginas | Fundo geral | `--wp--preset--color--background` |
 | `surface` | `#FCF9EA` | Fundo de login e cadastro | Superfícies, texto sobre verde | `--wp--preset--color--surface` |
 | `body-text` | `#666666` | Ajustado de `#868686` (ver [decisão 0001](decisoes/0001-contraste-das-cores.md)) | Texto corrido, rótulos | `--wp--preset--color--body-text` |
+| `danger` | `#B3261E` | Não existe no Figma | Mensagens e bordas de erro em formulários | `--wp--preset--color--danger` |
 | `white` | `#FFFFFF` | Texto dos botões | Texto sobre verde forte | `--wp--preset--color--white` |
 
 **Atenção ao nomear tokens de cor:** o WordPress gera a classe `.has-{slug}-color` para cada cor. Os nomes `text` e `background` colidem com classes internas do WordPress (`.has-text-color`, `.has-background`) e quebram as cores do site. Por isso o texto usa `body-text`.
@@ -76,3 +77,5 @@ As margens laterais da página usam o token `70` (60px), o que resulta em conte�
 
 - Três cores ajustadas para contraste ([decisão 0001](decisoes/0001-contraste-das-cores.md)).
 - O botão "Entrar" do Figma usa a fonte Gothic A1; no tema, todos os botões usam Poppins, para manter uma única família.
+- O Figma não prevê estados de erro nos formulários. Foi criada a cor `danger` (contraste de cerca de 6,5:1 sobre o creme), sempre acompanhada de ícone e mensagem, para que a cor não seja o único sinal.
+- Todos os campos de formulário têm rótulo visível acima (no Figma há só placeholder). Ver [decisão 0001](decisoes/0001-contraste-das-cores.md), exceção do placeholder.

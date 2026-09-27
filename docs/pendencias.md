@@ -12,3 +12,4 @@ Itens conhecidos que dependem de informação externa ou de fases futuras. Ao re
 | Botões "Cadastro" e "Entrar" usam as telas padrão do WordPress | Bloco `pna/header-acoes` | Telas próprias de cadastro e login (fase da área logada) |
 | Avisar a pessoa designer sobre os tons ajustados | Figma | Contato com o design ([decisão 0001](decisoes/0001-contraste-das-cores.md)) |
 | Confirmar se o site será institucional da UFPE (eMAG) | — | Coordenação do PNA ([decisão 0001](decisoes/0001-contraste-das-cores.md)) |
+| Números do contador de adoções são fixos ("00", "000") | `patterns/contador-adocoes.php` | Plugin `pna-core` (contagem real de adoções) |

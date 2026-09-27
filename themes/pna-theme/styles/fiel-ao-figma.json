@@ -5,16 +5,61 @@
   "settings": {
     "color": {
       "palette": [
-        { "slug": "primary", "color": "#35B08A", "name": "Verde PNA (marca)" },
-        { "slug": "primary-strong", "color": "#35B08A", "name": "Verde PNA forte (fundos com texto claro)" },
-        { "slug": "primary-text", "color": "#35B08A", "name": "Verde PNA texto" },
-        { "slug": "primary-light", "color": "#8ED1B5", "name": "Verde claro" },
-        { "slug": "primary-pale", "color": "#C5E4CF", "name": "Verde pálido" },
-        { "slug": "primary-tint", "color": "#E1F3E2", "name": "Verde tinta (fundo de campos)" },
-        { "slug": "background", "color": "#FFFFF1", "name": "Creme (fundo)" },
-        { "slug": "surface", "color": "#FCF9EA", "name": "Creme claro (superfície)" },
-        { "slug": "body-text", "color": "#868686", "name": "Texto" },
-        { "slug": "white", "color": "#FFFFFF", "name": "Branco" }
+        {
+          "slug": "primary",
+          "color": "#35B08A",
+          "name": "Verde PNA (marca)"
+        },
+        {
+          "slug": "primary-strong",
+          "color": "#35B08A",
+          "name": "Verde PNA forte (fundos com texto claro)"
+        },
+        {
+          "slug": "primary-text",
+          "color": "#35B08A",
+          "name": "Verde PNA texto"
+        },
+        {
+          "slug": "primary-light",
+          "color": "#8ED1B5",
+          "name": "Verde claro"
+        },
+        {
+          "slug": "primary-pale",
+          "color": "#C5E4CF",
+          "name": "Verde pálido"
+        },
+        {
+          "slug": "primary-tint",
+          "color": "#E1F3E2",
+          "name": "Verde tinta (fundo de campos)"
+        },
+        {
+          "slug": "background",
+          "color": "#FFFFF1",
+          "name": "Creme (fundo)"
+        },
+        {
+          "slug": "surface",
+          "color": "#FCF9EA",
+          "name": "Creme claro (superfície)"
+        },
+        {
+          "slug": "body-text",
+          "color": "#868686",
+          "name": "Texto"
+        },
+        {
+          "slug": "danger",
+          "color": "#B3261E",
+          "name": "Vermelho (erros)"
+        },
+        {
+          "slug": "white",
+          "color": "#FFFFFF",
+          "name": "Branco"
+        }
       ]
     }
   }

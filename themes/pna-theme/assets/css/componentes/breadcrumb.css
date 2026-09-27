@@ -1,0 +1,48 @@
+/* Breadcrumb (Figma: 20px, cinza; item atual verde sublinhado). Bloco: pna/breadcrumb */
+
+.pna-breadcrumb {
+	margin-block: var(--wp--preset--spacing--60);
+}
+
+.pna-breadcrumb__lista {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--wp--preset--spacing--30);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	font-size: var(--wp--preset--font-size--medium);
+	font-weight: 600;
+}
+
+.pna-breadcrumb__item {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--wp--preset--spacing--30);
+}
+
+/* Separador: ícone seta-direita.svg pintado com a cor do texto. */
+.pna-breadcrumb__item + .pna-breadcrumb__item::before {
+	content: "";
+	width: 16px;
+	height: 16px;
+	background-color: currentColor;
+	-webkit-mask: url("../../icons/seta-direita.svg") center / contain no-repeat;
+	mask: url("../../icons/seta-direita.svg") center / contain no-repeat;
+}
+
+.pna-breadcrumb a {
+	color: var(--wp--preset--color--body-text);
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.pna-breadcrumb a:hover {
+	text-decoration: underline;
+}
+
+.pna-breadcrumb [aria-current="page"] {
+	color: var(--wp--preset--color--primary-text);
+	text-decoration: underline;
+}

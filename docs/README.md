@@ -1,6 +1,7 @@
 # Documentação do projeto PNA
 
 - [Design tokens](design-tokens.md): cores, fontes, espaçamentos e como usá-los.
+- [Componentes](componentes.md): estilos de bloco, padrões e estrutura HTML de cada componente.
 - [Pendências](pendencias.md): o que ainda depende de informação externa ou de fases futuras.
 
 ## Registro de decisões

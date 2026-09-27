@@ -1,0 +1,15 @@
+/* Rodapé (Figma: faixa verde de 169px). Parte: parts/footer.html */
+
+.pna-footer {
+	min-height: 169px;
+}
+
+.pna-footer a:focus-visible {
+	outline: var(--wp--custom--border--thin) solid var(--wp--preset--color--surface);
+	outline-offset: 4px;
+}
+
+.pna-footer p {
+	margin: 0;
+	line-height: 1.5;
+}
