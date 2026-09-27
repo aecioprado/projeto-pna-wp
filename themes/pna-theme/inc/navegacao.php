@@ -39,11 +39,12 @@ function pna_marcar_item_atual( $html, $block ) {
 	$caminho_link  = trim( (string) wp_parse_url( $url, PHP_URL_PATH ), '/' );
 	$caminho_atual = pna_caminho_atual();
 
+	// Link da página inicial ("/"): só é o atual na própria página inicial.
 	if ( '' === $caminho_link ) {
-		return $html;
+		$e_atual = '' === $caminho_atual;
+	} else {
+		$e_atual = $caminho_atual === $caminho_link || str_starts_with( $caminho_atual . '/', $caminho_link . '/' );
 	}
-
-	$e_atual = $caminho_atual === $caminho_link || str_starts_with( $caminho_atual . '/', $caminho_link . '/' );
 
 	if ( ! $e_atual ) {
 		return $html;

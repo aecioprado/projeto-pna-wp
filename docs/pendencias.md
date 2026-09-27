@@ -5,7 +5,7 @@ Itens conhecidos que dependem de informação externa ou de fases futuras. Ao re
 | Item | Onde | Depende de |
 |---|---|---|
 | Número do WhatsApp do PNA (hoje o link é `#`) | `themes/pna-theme/parts/footer.html` | Coordenação do PNA |
-| Enviar o logo do PNA | Aparência → Editor → Padrões → Cabeçalho | Arquivo do logo em boa resolução (PNG transparente ou SVG) |
+| Enviar o logo do PNA **e remover o link provisório "Página inicial" do menu** (item com a classe `pna-menu__inicio-provisorio`) | Aparência → Editor → Padrões → Cabeçalho e `themes/pna-theme/parts/header.html` | Arquivo do logo em boa resolução (PNG transparente ou SVG) |
 | Trocar ícones provisórios pelos do Figma | `themes/pna-theme/assets/icons/` | Exportação do Figma (limite do plano) |
 | Formulário de apadrinhamento no Figma | Arquivo do Figma | Limite do plano Figma |
 | Avisar a pessoa designer sobre os tons ajustados | Figma | Contato com o design ([decisão 0001](decisoes/0001-contraste-das-cores.md)) |
@@ -19,6 +19,7 @@ Itens conhecidos que dependem de informação externa ou de fases futuras. Ao re
 | Revisar os textos de Dúvidas e Doações (o texto de maus-tratos não veio do Figma) | Páginas Dúvidas e Doações | Coordenação do PNA |
 | Notificações: página "Minhas notificações", contador do sino e e-mails | Plugin `pna-core` | Fase 9, na hospedagem ([decisão 0005](decisoes/0005-notificacoes-por-ultimo.md)) |
 | "Esqueci minha senha" depende de e-mail | Página Entrar | Fase 9, na hospedagem |
-| Política de Privacidade publicada (os formulários já apontam para ela) | Configurações → Privacidade | Texto aprovado pela coordenação |
+| Revisar e publicar a Política de Privacidade (rascunho criado pela configuração inicial) | Páginas → Política de Privacidade | Dados de contato, hospedagem, prazo de retenção e aprovação da coordenação |
 | Confirmar a retirada do CPF e do login social | Cadastro e Login | Coordenação do PNA ([decisão 0006](decisoes/0006-cadastro-sem-cpf-e-sem-login-social.md)) |
 | Foto de perfil do Membro (hoje mostra a inicial do nome) | Meu perfil | Definir se é necessária |
+| Ambiente de testes na hospedagem (subdomínio, HTTPS, banco próprio) | Hospedagem | Dados de acesso à hospedagem |

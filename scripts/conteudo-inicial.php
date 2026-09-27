@@ -1,6 +1,8 @@
 <?php
 /**
- * Cria o conteúdo mínimo para o ambiente local funcionar:
+ * Prepara o ambiente LOCAL: executa a configuração inicial do plugin
+ * (a mesma da tela Ferramentas → PNA: configuração inicial) e cria o
+ * conteúdo de exemplo:
  * páginas do menu, página inicial e de postagens, cadastro aberto,
  * postagens de exemplo, a página privada "Guia de estilo" e, com o
  * plugin pna-core ativo, pets, um membro e solicitações de exemplo.
@@ -17,63 +19,15 @@ if ( ! defined( 'WP_CLI' ) ) {
 	exit;
 }
 
-$pna_paginas = array(
-	'inicio'              => 'Página inicial',
-	'postagens'           => 'Postagens',
-	'duvidas'             => 'Dúvidas',
-	'doacoes'             => 'Doações',
-	'meu-perfil'          => 'Meu perfil',
-	'minhas-notificacoes' => 'Minhas notificações',
-);
-
-$pna_ids = array();
-
-foreach ( $pna_paginas as $pna_slug => $pna_titulo ) {
-	$pna_existente = get_page_by_path( $pna_slug );
-
-	if ( $pna_existente ) {
-		$pna_ids[ $pna_slug ] = $pna_existente->ID;
-		WP_CLI::log( "Já existe: {$pna_titulo}" );
-		continue;
-	}
-
-	$pna_id = wp_insert_post(
-		array(
-			'post_type'   => 'page',
-			'post_status' => 'publish',
-			'post_name'   => $pna_slug,
-			'post_title'  => $pna_titulo,
-		),
-		true
-	);
-
-	if ( is_wp_error( $pna_id ) ) {
-		WP_CLI::warning( "Não foi possível criar {$pna_titulo}: " . $pna_id->get_error_message() );
-		continue;
-	}
-
-	$pna_ids[ $pna_slug ] = $pna_id;
-	WP_CLI::log( "Criada: {$pna_titulo}" );
+if ( ! function_exists( 'pna_core_configuracao_inicial' ) ) {
+	WP_CLI::error( 'O plugin pna-core precisa estar ativo. Rode "npm start" e tente de novo.' );
 }
 
-// Textos das páginas Dúvidas e Doações (só se a página ainda estiver vazia).
-foreach ( array( 'duvidas' => 'pna/conteudo-duvidas', 'doacoes' => 'pna/conteudo-doacoes' ) as $pna_slug => $pna_padrao ) {
-	if ( isset( $pna_ids[ $pna_slug ] ) && '' === trim( (string) get_post_field( 'post_content', $pna_ids[ $pna_slug ] ) ) ) {
-		wp_update_post(
-			array(
-				'ID'           => $pna_ids[ $pna_slug ],
-				'post_content' => '<!-- wp:pattern {"slug":"' . $pna_padrao . '"} /-->',
-			)
-		);
-		WP_CLI::log( "Textos do Figma aplicados à página: {$pna_slug}" );
-	}
+// Mesma configuração da tela Ferramentas → PNA: configuração inicial.
+foreach ( pna_core_configuracao_inicial() as $pna_linha ) {
+	WP_CLI::log( $pna_linha );
 }
-
-if ( isset( $pna_ids['inicio'], $pna_ids['postagens'] ) ) {
-	update_option( 'show_on_front', 'page' );
-	update_option( 'page_on_front', $pna_ids['inicio'] );
-	update_option( 'page_for_posts', $pna_ids['postagens'] );
-}
+WP_CLI::log( 'Configuração inicial conferida.' );
 
 // Página privada "Guia de estilo" (só administradores veem).
 if ( ! get_page_by_path( 'guia-de-estilo' ) ) {
@@ -91,45 +45,86 @@ if ( ! get_page_by_path( 'guia-de-estilo' ) ) {
 	WP_CLI::log( 'Já existe: Guia de estilo' );
 }
 
-// Postagens de exemplo (textos do Figma), para ver os cards de postagem.
+/**
+ * Importa uma foto de scripts/exemplos/ e a define como imagem destacada.
+ * Não faz nada se o conteúdo já tiver imagem destacada.
+ *
+ * @param int    $post_id   Post, pet ou página.
+ * @param string $arquivo   Caminho da foto.
+ * @param string $descricao Título do arquivo na biblioteca de mídia.
+ */
+function pna_local_aplicar_foto( $post_id, $arquivo, $descricao ) {
+	if ( has_post_thumbnail( $post_id ) || ! file_exists( $arquivo ) ) {
+		return;
+	}
+	require_once ABSPATH . 'wp-admin/includes/file.php';
+	require_once ABSPATH . 'wp-admin/includes/media.php';
+	require_once ABSPATH . 'wp-admin/includes/image.php';
+
+	// O WordPress move o arquivo ao importar: trabalha numa cópia temporária.
+	$temp = wp_tempnam( basename( $arquivo ) );
+	copy( $arquivo, $temp );
+	$anexo = media_handle_sideload(
+		array(
+			'name'     => basename( $arquivo ),
+			'tmp_name' => $temp,
+		),
+		$post_id,
+		$descricao
+	);
+	if ( is_wp_error( $anexo ) ) {
+		WP_CLI::warning( 'Foto não importada (' . basename( $arquivo ) . '): ' . $anexo->get_error_message() );
+		return;
+	}
+	set_post_thumbnail( $post_id, $anexo );
+	WP_CLI::log( 'Foto aplicada: ' . get_the_title( $post_id ) );
+}
+
+// Postagens de exemplo: as 4 do Figma e mais 6, para ver a paginação
+// de /postagens/ (6 por página). A primeira da lista é a mais recente.
 $pna_postagens = array(
-	'quais-alimentos-dar-aos-pets'     => array( 'Quais alimentos dar aos pets?', 'Assim como ocorre com as pessoas, a nutrição é essencial para manter a saúde física e mental de cães e gatos. A alimentação correta impacta positivamente a qualidade de vida.' ),
+	'quais-alimentos-dar-aos-pets'      => array( 'Quais alimentos dar aos pets?', 'Assim como ocorre com as pessoas, a nutrição é essencial para manter a saúde física e mental de cães e gatos. A alimentação correta impacta positivamente a qualidade de vida.' ),
 	'cuidados-com-filhotes-de-cachorro' => array( 'Cuidados com filhotes de cachorro', 'Este post apresenta algumas formas de adaptar o pequeno à sua nova casa, com dicas de cuidado para o tutor quanto à alimentação, higiene e gasto de energia.' ),
 	'gravidez-felina'                   => array( 'Gravidez felina', 'A gestação de gato é um assunto que merece muita atenção! Nesse período, a futura mamãe fica mais vulnerável e, por isso, precisamos tomar alguns cuidados.' ),
 	'vacinas-obrigatorias'              => array( 'Vacinas obrigatórias para cães e gatos', 'A vacinação em pets protege contra diversas doenças graves e contagiosas, prevenindo riscos que podem comprometer a vida dos animais e até mesmo afetar pessoas.' ),
+	'castracao-mitos-e-verdades'        => array( 'Castração: mitos e verdades', 'A castração evita ninhadas indesejadas e reduz o risco de algumas doenças. Veja o que é mito e o que é verdade sobre o procedimento e a recuperação do pet.' ),
+	'adaptacao-do-gato-adotado'         => array( 'Os primeiros dias do gato adotado', 'É normal o gato se esconder quando chega a uma casa nova. Um cantinho tranquilo, paciência e rotina ajudam o novo morador a se sentir seguro.' ),
+	'passeios-com-o-cachorro'           => array( 'Passeios com o cachorro', 'Passear gasta energia, estimula o faro e fortalece o vínculo com o tutor. Use sempre guia e coleira com identificação e evite os horários mais quentes.' ),
+	'cuidados-no-calor'                 => array( 'Cuidados com os pets no calor', 'No calor do Agreste, água fresca sempre à disposição e sombra são indispensáveis. Fique atento a sinais de cansaço excessivo e respiração ofegante.' ),
+	'brincadeiras-para-gatos'           => array( 'Brincadeiras para gatos', 'Brincar é uma necessidade do gato: gasta energia, reduz o estresse e evita comportamentos destrutivos. Brinquedos simples feitos em casa já fazem sucesso.' ),
+	'escovacao-e-higiene'               => array( 'Escovação e higiene', 'Escovar o pelo remove fios soltos, evita nós e é um ótimo momento de carinho. A frequência ideal depende do tipo de pelagem de cada animal.' ),
 );
 
+$pna_ordem = 0;
 foreach ( $pna_postagens as $pna_slug => $pna_post ) {
-	if ( get_page_by_path( $pna_slug, OBJECT, 'post' ) ) {
-		WP_CLI::log( "Já existe: {$pna_post[0]}" );
-		continue;
+	++$pna_ordem;
+	$pna_existente = get_page_by_path( $pna_slug, OBJECT, 'post' );
+	if ( $pna_existente ) {
+		$pna_post_id = $pna_existente->ID;
+	} else {
+		$pna_post_id = wp_insert_post(
+			array(
+				'post_type'    => 'post',
+				'post_status'  => 'publish',
+				'post_name'    => $pna_slug,
+				'post_title'   => $pna_post[0],
+				'post_excerpt' => $pna_post[1],
+				'post_content' => '<!-- wp:paragraph --><p>' . esc_html( $pna_post[1] ) . '</p><!-- /wp:paragraph -->',
+				'post_date'    => wp_date( 'Y-m-d H:i:s', time() - ( $pna_ordem * DAY_IN_SECONDS ) ),
+			)
+		);
+		WP_CLI::log( "Criada postagem de exemplo: {$pna_post[0]}" );
 	}
-	wp_insert_post(
-		array(
-			'post_type'    => 'post',
-			'post_status'  => 'publish',
-			'post_name'    => $pna_slug,
-			'post_title'   => $pna_post[0],
-			'post_excerpt' => $pna_post[1],
-			'post_content' => '<!-- wp:paragraph --><p>' . esc_html( $pna_post[1] ) . '</p><!-- /wp:paragraph -->',
-		)
-	);
-	WP_CLI::log( "Criada postagem de exemplo: {$pna_post[0]}" );
+	pna_local_aplicar_foto( $pna_post_id, __DIR__ . '/exemplos/postagens/' . $pna_slug . '.jpg', 'Foto da postagem: ' . $pna_post[0] . ' (exemplo)' );
 }
 
-// Cadastro aberto ao público. Novos usuários entram como Membro (plugin pna-core).
-update_option( 'users_can_register', 1 );
-update_option( 'default_role', get_role( 'pna_membro' ) ? 'pna_membro' : 'subscriber' );
-
-if ( ! function_exists( 'pna_core_criar_solicitacao' ) ) {
-	WP_CLI::warning( 'Plugin pna-core inativo: pets e solicitações de exemplo não foram criados.' );
-	WP_CLI::success( 'Conteúdo inicial pronto.' );
-	return;
+// Remove a postagem padrão do WordPress ("Olá, mundo!"), se ainda existir.
+$pna_ola = get_page_by_path( 'ola-mundo', OBJECT, 'post' );
+$pna_ola = $pna_ola ? $pna_ola : get_page_by_path( 'hello-world', OBJECT, 'post' );
+if ( $pna_ola ) {
+	wp_delete_post( $pna_ola->ID, true );
+	WP_CLI::log( 'Removida a postagem padrão do WordPress.' );
 }
-
-pna_core_criar_caracteristicas_padrao();
-pna_core_criar_paginas();
-WP_CLI::log( 'Páginas da área logada conferidas: Entrar, Cadastro, Meu perfil, Adotar, Apadrinhar.' );
 
 // Pets de exemplo (nomes do Figma). Campos: espécie, sexo, porte, idade, castrado, vacinado, sociável, brincalhão, carinhoso.
 $pna_pets = array(
@@ -172,34 +167,8 @@ foreach ( $pna_pets as $pna_slug => $pna_pet ) {
 }
 
 // Fotos dos pets de exemplo (scripts/exemplos/pets/, créditos em CREDITOS.md).
-// Só são aplicadas a pets que ainda não têm foto principal.
-require_once ABSPATH . 'wp-admin/includes/file.php';
-require_once ABSPATH . 'wp-admin/includes/media.php';
-require_once ABSPATH . 'wp-admin/includes/image.php';
-
 foreach ( $pna_pet_ids as $pna_slug => $pna_id ) {
-	$pna_foto = __DIR__ . '/exemplos/pets/' . $pna_slug . '.jpg';
-	if ( has_post_thumbnail( $pna_id ) || ! file_exists( $pna_foto ) ) {
-		continue;
-	}
-	// O WordPress move o arquivo ao importar: trabalha numa cópia temporária.
-	$pna_temp = wp_tempnam( $pna_slug . '.jpg' );
-	copy( $pna_foto, $pna_temp );
-	$pna_anexo = media_handle_sideload(
-		array(
-			'name'     => $pna_slug . '.jpg',
-			'tmp_name' => $pna_temp,
-		),
-		$pna_id,
-		/* translators: %s: nome do pet. */
-		sprintf( 'Foto de %s (exemplo)', get_the_title( $pna_id ) )
-	);
-	if ( is_wp_error( $pna_anexo ) ) {
-		WP_CLI::warning( "Foto de {$pna_slug} não importada: " . $pna_anexo->get_error_message() );
-		continue;
-	}
-	set_post_thumbnail( $pna_id, $pna_anexo );
-	WP_CLI::log( 'Foto aplicada ao pet: ' . get_the_title( $pna_id ) );
+	pna_local_aplicar_foto( $pna_id, __DIR__ . '/exemplos/pets/' . $pna_slug . '.jpg', 'Foto de ' . get_the_title( $pna_id ) . ' (exemplo)' );
 }
 
 // Membro de exemplo (somente ambiente local).

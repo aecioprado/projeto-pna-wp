@@ -13,6 +13,7 @@ defined( 'ABSPATH' ) || exit;
 require_once get_theme_file_path( 'inc/icones.php' );
 require_once get_theme_file_path( 'inc/navegacao.php' );
 require_once get_theme_file_path( 'inc/estilos-de-bloco.php' );
+require_once get_theme_file_path( 'inc/consultas.php' );
 
 /**
  * Lista os arquivos CSS do tema, na ordem em que devem ser carregados:

@@ -11,7 +11,8 @@
     "wp": "wp-env run cli wp",
     "logs": "wp-env logs",
     "reset": "wp-env clean all",
-    "destroy": "wp-env destroy"
+    "destroy": "wp-env destroy",
+    "pacote": "bash scripts/empacotar.sh"
   },
   "devDependencies": {
     "@wordpress/env": "^11.16.0"

@@ -37,6 +37,7 @@ O CSS de cada componente está em `themes/pna-theme/assets/css/componentes/`, um
 | Pets para adoção | `patterns/grade-pets.php` | Título, 4 pets mais recentes (sem adotados) e "Ver mais" |
 | Conteúdo da página Dúvidas | `patterns/conteudo-duvidas.php` | Textos do Figma com âncoras (`#quem-somos`, `#como-adotar`, `#buscar-pet`, `#apadrinhamento`, `#maus-tratos`) |
 | Conteúdo da página Doações | `patterns/conteudo-doacoes.php` | Textos do Figma com âncoras (`#alimentos`, `#itens`, `#dinheiro`, `#pix`) |
+| Política de Privacidade (rascunho) | `patterns/politica-privacidade.php` | Modelo baseado nos dados que o site coleta; usado pela configuração inicial (não aparece no seletor) |
 | Legenda de personalidade | `patterns/legenda-personalidade.php` | Ícones Sociável/Brincalhão/Carinhoso (usada na galeria; não aparece no seletor) |
 | Guia de estilo | `patterns/guia-de-estilo.php` | Página de referência (não aparece no seletor de padrões) |
 
@@ -83,14 +84,16 @@ Classes novas, estilizadas em `assets/css/componentes/conta.css`: `pna-aviso` (`
 | Template | Página |
 |---|---|
 | `front-page.html` | Página inicial (a imagem ao lado do contador é a **imagem destacada** da página "Página inicial") |
-| `archive-pet.html` | Galeria `/pets/` |
+| `archive-pet.html` | Galeria `/pets/` (12 por página) |
 | `single-pet.html` | Página de cada pet |
-| `home.html` | Lista de postagens `/postagens/` |
+| `home.html` | Lista de postagens `/postagens/` (6 por página) |
 | `single.html` | Cada postagem |
 | `page.html` | Páginas comuns (Dúvidas, Doações…) |
 | `pagina-conta.html` | Template escolhível "Página de conta e formulários": breadcrumb e conteúdo, sem título (usado pelas páginas da área logada) |
 | `404.html` | Página não encontrada |
 | `index.html` | Reserva (qualquer outra listagem) |
+
+A quantidade de itens por página fica em `themes/pna-theme/inc/consultas.php`.
 
 ## 3. Componentes com estrutura HTML fixa
 
