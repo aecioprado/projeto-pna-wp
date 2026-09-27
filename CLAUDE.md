@@ -73,6 +73,9 @@ Leia este arquivo antes de alterar qualquer coisa. Ele define as convenções do
 
 - A versão fica no cabeçalho de `themes/pna-theme/style.css`. Aumente a cada entrega que vá para a produção (padrões e templates ficam em cache até a versão mudar).
 - No ambiente local, `WP_DEVELOPMENT_MODE` = `theme` desliga esse cache; não remova essa linha do `.wp-env.json`.
+- A versão do plugin fica em `plugins/pna-core/pna-core.php` (cabeçalho e constante `PNA_CORE_VERSAO`): aumente as duas juntas.
+- Configurações que um site novo precisa (páginas, opções) entram em `pna_core_configuracao_inicial()` (`includes/configuracao.php`), nunca só no `scripts/conteudo-inicial.php`, que é exclusivo do ambiente local.
+- Publicação: `docs/publicacao.md`.
 
 ## Git
 

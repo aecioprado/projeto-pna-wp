@@ -44,7 +44,7 @@ cd projeto-pna-wp
 npm install
 npm start          # sobe o WordPress (a 1ª vez demora alguns minutos)
 npm run setup      # português, fuso de Recife, tema PNA e links amigáveis
-npm run conteudo   # páginas, postagens, pets e solicitações de exemplo, guia de estilo
+npm run conteudo   # configuração inicial + postagens, pets e solicitações de exemplo (com fotos), guia de estilo
 ```
 
 O `npm run conteudo` pode ser executado de novo a qualquer momento: o que já existe não é duplicado.
@@ -69,6 +69,7 @@ Acesse:
 | `npm run conteudo` | Cria as páginas básicas (sem duplicar) |
 | `npm run wp -- <comando>` | Roda WP-CLI. Ex.: `npm run wp -- plugin list` |
 | `npm run logs` | Mostra os logs do WordPress |
+| `npm run pacote` | Gera os `.zip` do tema e do plugin em `dist/`, para instalar na hospedagem |
 | `npm run reset` | Apaga o banco local e recomeça do zero |
 | `npm run destroy` | Remove o ambiente inteiro (containers e dados) |
 
@@ -147,7 +148,9 @@ Prefixos de branch: `feat/` (funcionalidade), `fix/` (correção), `docs/` (docu
 
 ## Publicação
 
-A cada publicação na produção, **aumente a versão do tema** no cabeçalho de `themes/pna-theme/style.css` (ex.: `0.3.0` → `0.4.0`). Isso faz o WordPress atualizar o cache de padrões e os navegadores baixarem o CSS novo. Sem isso, padrões novos podem não aparecer no site publicado.
+O passo a passo completo (ambiente de testes, atualizações e produção) está em [`docs/publicacao.md`](docs/publicacao.md). Num WordPress novo, a configuração é feita pelo painel, em **Ferramentas → PNA: configuração inicial**, sem terminal.
+
+A cada publicação na produção, **aumente a versão do tema** no cabeçalho de `themes/pna-theme/style.css` (ex.: `0.3.0` → `0.4.0`). Faça o mesmo com a versão do plugin (`plugins/pna-core/pna-core.php`) quando ele mudar. Isso faz o WordPress atualizar o cache de padrões e os navegadores baixarem o CSS novo. Sem isso, padrões novos podem não aparecer no site publicado.
 
 ## Regras de segurança (repositório público)
 

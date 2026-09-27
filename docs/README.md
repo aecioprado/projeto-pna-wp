@@ -3,6 +3,7 @@
 - [Design tokens](design-tokens.md): cores, fontes, espaçamentos e como usá-los.
 - [Componentes](componentes.md): estilos de bloco, padrões e estrutura HTML de cada componente.
 - [Modelo de dados](modelo-de-dados.md): pets, solicitações, fluxos de status e papéis.
+- [Publicação](publicacao.md): como instalar e atualizar o site na hospedagem.
 - [Pendências](pendencias.md): o que ainda depende de informação externa ou de fases futuras.
 
 ## Registro de decisões
