@@ -11,7 +11,7 @@ projeto-pna-wp/
 ├── .wp-env.json          # define o WordPress local (versão, PHP, tema, plugins)
 ├── package.json          # atalhos: npm start, npm run setup...
 ├── CLAUDE.md             # convenções do projeto para IA e desenvolvedores
-├── docs/                 # decisões, design tokens, manual do admin
+├── docs/                 # decisões (docs/decisoes), design tokens, manual do admin
 ├── plugins/              # pna-core (regras de negócio) – a criar
 └── themes/pna-theme/     # tema de blocos (visual)
     ├── theme.json        # design system: cores, fontes, espaçamentos

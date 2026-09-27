@@ -16,15 +16,28 @@ Leia este arquivo antes de alterar qualquer coisa. Ele define as convenções do
 - `plugins/pna-core/`: regras de negócio (CPTs `pet` e solicitações, taxonomias, papéis, e-mails). O visual nunca depende de lógica escrita no tema.
 - Ambiente local: `wp-env` (Docker). Use `npm run wp -- <comando>` para WP-CLI.
 
+## Escopo
+
+- **Apenas desktop**, canvas de 1280px ([decisão 0002](docs/decisoes/0002-escopo-apenas-desktop.md)). Não crie breakpoints, menus mobile nem versões adaptadas para telas pequenas.
+
 ## Design system
 
-- Todos os tokens (cores, fontes, tamanhos, espaçamentos, raios) vivem em `themes/pna-theme/theme.json`.
-- **Nunca** use cores, fontes ou tamanhos fixos em CSS ou em blocos. Use as variáveis do theme.json (`var(--wp--preset--color--primary)`, `var(--wp--preset--spacing--40)` etc.).
+- Todos os tokens (cores, fontes, tamanhos, espaçamentos, raios, bordas) vivem em `themes/pna-theme/theme.json`. Referência completa em `docs/design-tokens.md`.
+- **Nunca** use cores, fontes ou medidas fixas em CSS ou em blocos. Use as variáveis geradas pelo theme.json (`var(--wp--preset--color--primary-text)`, `var(--wp--preset--spacing--40)`, `var(--wp--custom--radius--medium)` etc.).
+- Uso das cores ([decisão 0001](docs/decisoes/0001-contraste-das-cores.md)):
+  - `primary`: bordas, ícones e decoração. Nunca para texto.
+  - `primary-strong`: fundo de botões, cabeçalho e rodapé, com texto claro de 24px ou mais.
+  - `primary-text`: títulos, links e qualquer texto verde sobre fundo claro.
+  - `text`: texto corrido e rótulos.
+- Todo texto precisa de contraste mínimo WCAG AA (4,5:1 texto normal; 3:1 texto grande). Confira combinações novas antes de usar.
+- Todo campo de formulário tem rótulo visível acima; o placeholder é só um exemplo.
 - CSS extra só em `assets/css/components.css`, e apenas para o que o theme.json não cobre.
-- Fonte Poppins hospedada no tema (`assets/fonts/`); não carregar do Google Fonts (LGPD e desempenho).
+- Fonte Poppins hospedada no tema (`assets/fonts/poppins/`); não carregar do Google Fonts (LGPD e desempenho).
 - Ícones em SVG em `assets/icons/`.
-- Todo texto precisa de contraste mínimo WCAG AA (4,5:1 texto normal; 3:1 texto grande).
-- Mobile first: o Figma só tem desktop (1280px); todo componente deve funcionar a partir de 360px.
+
+## Decisões
+
+- Decisões importantes ficam em `docs/decisoes/`, numeradas. Antes de mudar algo coberto por uma decisão, leia o arquivo; ao mudar, registre uma nova decisão em vez de apagar a antiga.
 
 ## Código
 
