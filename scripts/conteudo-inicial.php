@@ -29,6 +29,9 @@ foreach ( pna_core_configuracao_inicial() as $pna_linha ) {
 }
 WP_CLI::log( 'Configuração inicial conferida.' );
 
+// No ambiente local o site fica sempre aberto (o modo pré-lançamento é para a hospedagem).
+update_option( 'pna_core_pre_lancamento', '0' );
+
 // Página privada "Guia de estilo" (só administradores veem).
 if ( ! get_page_by_path( 'guia-de-estilo' ) ) {
 	wp_insert_post(

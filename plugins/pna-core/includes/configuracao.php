@@ -175,7 +175,8 @@ function pna_core_situacao_configuracao() {
 		__( 'Links amigáveis ativados', 'pna' )         => '' !== (string) get_option( 'permalink_structure' ),
 		__( 'Política de Privacidade publicada', 'pna' ) => $privacidade && 'publish' === get_post_status( $privacidade ),
 		__( 'Idioma do site em português', 'pna' )     => 'pt_BR' === get_locale(),
-		__( 'Mecanismos de busca bloqueados (use só no ambiente de testes)', 'pna' ) => '0' === (string) get_option( 'blog_public' ),
+		__( 'Site aberto ao público (modo pré-lançamento desligado)', 'pna' ) => ! pna_core_pre_lancamento_ativo(),
+		__( 'Mecanismos de busca liberados (desmarque "Evitar indexação" no lançamento)', 'pna' ) => '1' === (string) get_option( 'blog_public' ),
 	);
 	foreach ( array_merge( pna_core_paginas_site(), pna_core_paginas() ) as $slug => $dados ) {
 		/* translators: %s: título da página. */
@@ -209,6 +210,11 @@ function pna_core_render_configuracao() {
 	if ( isset( $_POST['pna_configurar'] ) && check_admin_referer( 'pna_configuracao' ) ) {
 		$registro = pna_core_configuracao_inicial();
 	}
+	if ( isset( $_POST['pna_pre_lancamento'] ) && check_admin_referer( 'pna_pre_lancamento' ) ) {
+		$ligar = '1' === sanitize_key( wp_unslash( $_POST['pna_pre_lancamento'] ) );
+		update_option( 'pna_core_pre_lancamento', $ligar ? '1' : '0' );
+		$registro = array( $ligar ? __( 'Modo pré-lançamento LIGADO: visitantes veem apenas a página "Em breve".', 'pna' ) : __( 'Modo pré-lançamento DESLIGADO: o site está aberto ao público.', 'pna' ) );
+	}
 	?>
 	<div class="wrap">
 		<h1><?php esc_html_e( 'PNA: configuração inicial', 'pna' ); ?></h1>
@@ -240,6 +246,23 @@ function pna_core_render_configuracao() {
 		<form method="post">
 			<?php wp_nonce_field( 'pna_configuracao' ); ?>
 			<p><button type="submit" name="pna_configurar" value="1" class="button button-primary"><?php esc_html_e( 'Executar configuração inicial', 'pna' ); ?></button></p>
+		</form>
+
+		<h2><?php esc_html_e( 'Modo pré-lançamento', 'pna' ); ?></h2>
+		<p>
+			<?php if ( pna_core_pre_lancamento_ativo() ) : ?>
+				<strong>🔒 <?php esc_html_e( 'Ligado.', 'pna' ); ?></strong> <?php esc_html_e( 'Visitantes veem apenas a página "Em breve". Quem está logado (equipe e membros de teste) vê o site completo.', 'pna' ); ?>
+			<?php else : ?>
+				<strong>🌐 <?php esc_html_e( 'Desligado.', 'pna' ); ?></strong> <?php esc_html_e( 'O site está aberto ao público.', 'pna' ); ?>
+			<?php endif; ?>
+		</p>
+		<form method="post" onsubmit="return confirm('<?php echo esc_js( pna_core_pre_lancamento_ativo() ? __( 'Abrir o site ao público agora?', 'pna' ) : __( 'Fechar o site ao público?', 'pna' ) ); ?>');">
+			<?php wp_nonce_field( 'pna_pre_lancamento' ); ?>
+			<?php if ( pna_core_pre_lancamento_ativo() ) : ?>
+				<p><button type="submit" name="pna_pre_lancamento" value="0" class="button"><?php esc_html_e( 'Desligar e abrir o site ao público', 'pna' ); ?></button></p>
+			<?php else : ?>
+				<p><button type="submit" name="pna_pre_lancamento" value="1" class="button"><?php esc_html_e( 'Ligar e fechar o site ao público', 'pna' ); ?></button></p>
+			<?php endif; ?>
 		</form>
 	</div>
 	<?php

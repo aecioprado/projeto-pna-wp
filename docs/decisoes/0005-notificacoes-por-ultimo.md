@@ -24,6 +24,6 @@ As notificações são a **última fase de implementação**, feita e validada *
 ## Ordem das fases a partir daqui
 
 1. Fase 7 – Área logada (cadastro, login, perfil, formulários).
-2. Fase 8 – Revisão geral, acessibilidade, LGPD e publicação num ambiente de testes na hospedagem.
+2. Fase 8 – Publicação na hospedagem, com o site fechado ao público pelo modo pré-lançamento (sem ambiente de testes, ver [decisão 0007](0007-sem-ambiente-de-testes.md)).
 3. Fase 9 – Notificações (site e e-mail), validadas na hospedagem.
-4. Fase 10 – Entrega: produção, manual do administrador e remoção dos acessos do desenvolvedor.
+4. Fase 10 – Lançamento e entrega: abrir o site ao público, manual do administrador e remoção dos acessos do desenvolvedor.

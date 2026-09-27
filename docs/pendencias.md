@@ -22,4 +22,4 @@ Itens conhecidos que dependem de informação externa ou de fases futuras. Ao re
 | Revisar e publicar a Política de Privacidade (rascunho criado pela configuração inicial) | Páginas → Política de Privacidade | Dados de contato, hospedagem, prazo de retenção e aprovação da coordenação |
 | Confirmar a retirada do CPF e do login social | Cadastro e Login | Coordenação do PNA ([decisão 0006](decisoes/0006-cadastro-sem-cpf-e-sem-login-social.md)) |
 | Foto de perfil do Membro (hoje mostra a inicial do nome) | Meu perfil | Definir se é necessária |
-| Ambiente de testes na hospedagem (subdomínio, HTTPS, banco próprio) | Hospedagem | Dados de acesso à hospedagem |
+| Publicar na HostGator seguindo `docs/publicacao.md` (site fechado ao público) | Hospedagem | Acesso ao cPanel e ao painel do WordPress |
